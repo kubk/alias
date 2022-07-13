@@ -1,0 +1,69 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*height: 100vh;*/
+  /*width: 300px;*/
+  outline: 1px solid red;
+}
+
+.infinite-cards {
+  height: 200px;
+  width: 100%;
+  display: grid;
+  place-items: center center;
+}
+
+.infinite-cards .card {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 150px;
+  width: 150px;
+  border-radius: 15px;
+  color: #fff;
+  display: grid;
+  place-items: center center;
+  padding: 10px;
+}
+
+.infinite-cards p {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.guide__component-wrapper {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+  display: grid;
+  place-items: center center;
+  width: 100%;
+}
+
+.infinite-cards__guide-wrapper {
+  width: 20rem;
+  height: 20rem;
+  padding: 2.5rem;
+  margin: 2.5rem;
+  overflow: hidden;
+  background-image: radial-gradient(circle at 85.54% 7.65%,#fdecc7 0,#f2deb5 50%,#e7d0a4 100%);
+  border-radius: 15px;
+}
