@@ -62,10 +62,8 @@ export const CardDeck = observer(() => {
     <div
       className={css({
         height: 350,
-        width: "100%",
         position: "relative",
-        marginTop: "20%",
-        marginLeft: "7.5%",
+        width: "100%",
       })}
     >
       {store.cards.map((card, index) => {

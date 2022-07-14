@@ -13,13 +13,14 @@ export const Card = ({ word, style, onDragEnd, animate }: Props) => (
   <motion.div
     className={css({
       position: "absolute",
-      left: 0,
+      left: "50%",
       top: 0,
       height: 300,
       width: 300,
       borderRadius: 15,
       color: colors.text,
       display: "grid",
+      marginLeft: "-160px",
       placeItems: "center center",
       padding: 10,
     })}
@@ -36,7 +37,7 @@ export const Card = ({ word, style, onDragEnd, animate }: Props) => (
         textAlign: "center",
         fontSize: 48,
         fontWeight: 600,
-        textTransform: 'capitalize',
+        textTransform: "capitalize",
       })}
     >
       {word}

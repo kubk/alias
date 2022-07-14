@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import { colors } from "./colors";
 import { store } from "./store";
 import { Counter } from "./counter";
+import { Countdown } from "./countdown";
 
 export const Page = observer(() => {
   return (
@@ -14,8 +15,24 @@ export const Page = observer(() => {
         flexDirection: "column",
       })}
     >
+      <button onClick={() => store.startTimer()}>Start</button>
       <div
-        className={css({ width: "100%", height: "100%", overflow: "hidden" })}
+        className={css({
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 16,
+        })}
+      >
+        <Countdown />
+      </div>
+
+      <div
+        className={css({
+          overflow: "hidden",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 24,
+        })}
       >
         <CardDeck />
       </div>
