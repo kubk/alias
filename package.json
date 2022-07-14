@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emotion/css": "^11.9.0",
+    "colord": "^2.9.2",
     "framer-motion": "^4.1.17",
     "mobx": "^6.6.1",
     "mobx-log": "^0.9.2",

@@ -2,10 +2,12 @@ import React from "react";
 import { css } from "@emotion/css";
 import { CardDeck } from "./card-deck";
 import { observer } from "mobx-react-lite";
-import { colors } from "./colors";
+import { colors } from "./theme";
 import { store } from "./store";
 import { Counter } from "./counter";
 import { Countdown } from "./countdown";
+import { StartModal } from "./start-modal";
+import { FinishModal } from "./finish-modal";
 
 export const Page = observer(() => {
   return (
@@ -15,7 +17,8 @@ export const Page = observer(() => {
         flexDirection: "column",
       })}
     >
-      <button onClick={() => store.startTimer()}>Start</button>
+      <StartModal />
+      <FinishModal />
       <div
         className={css({
           display: "flex",

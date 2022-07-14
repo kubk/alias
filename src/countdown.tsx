@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { store } from "./store";
 import { AnimatePresence, motion } from "framer-motion";
 import { css } from "@emotion/css";
-import { colors } from "./colors";
+import { colors } from "./theme";
 import React from "react";
 
 export const Countdown = observer(() => {

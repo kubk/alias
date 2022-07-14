@@ -11,5 +11,10 @@
 body {
   margin: 0;
   height: 100vh;
-  background-image: radial-gradient(circle at 85.54% 7.65%,#fdecc7 0,#f2deb5 50%,#e7d0a4 100%);
+  background-image: radial-gradient(
+    circle at 85.54% 7.65%,
+    #fdecc7 0,
+    #f2deb5 50%,
+    #e7d0a4 100%
+  );
 }

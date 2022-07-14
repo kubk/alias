@@ -5,7 +5,7 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { colors } from "./colors";
+import { colors } from "./theme";
 import { Card } from "./card";
 import { observer } from "mobx-react-lite";
 import { css } from "@emotion/css";

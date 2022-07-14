@@ -3,11 +3,15 @@ import { makeLoggable } from "mobx-log";
 import { getRandomWord } from "./get-random-word";
 import { assert } from "ts-essentials";
 
+type Screen = "start-modal" | "game" | "finish";
+
 export class Store {
   cards = [getRandomWord(), getRandomWord()];
   skipped: string[] = [];
   guessed: string[] = [];
   secondsLeft = 60;
+  lastSecondsPerRound?: number;
+  screen: Screen = "start-modal";
   private intervalId?: number;
 
   constructor() {
@@ -29,20 +33,32 @@ export class Store {
   }
 
   startTimer() {
+    this.screen = "game";
     this.intervalId = setInterval(
       action(() => {
         this.secondsLeft--;
         if (this.secondsLeft === 0) {
           assert(this.intervalId);
           clearInterval(this.intervalId);
+          this.screen = "finish";
         }
       }),
       1000
     );
   }
 
-  get isRunning() {
-    return !!this.intervalId;
+  changeSecondsType(seconds: number) {
+    this.secondsLeft = seconds;
+    this.lastSecondsPerRound = seconds;
+  }
+
+  restart() {
+    assert(this.lastSecondsPerRound);
+    this.secondsLeft = this.lastSecondsPerRound;
+    this.skipped = [];
+    this.guessed = [];
+    this.cards = [getRandomWord(), getRandomWord()];
+    this.screen = "start-modal";
   }
 }
 

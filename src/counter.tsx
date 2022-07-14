@@ -6,7 +6,7 @@ export const Counter = (props: { color: string; value: number }) => {
   return (
     <div>
       {/** @ts-ignore */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <motion.div
           key={props.value}
           className={css({

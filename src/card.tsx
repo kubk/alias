@@ -1,7 +1,7 @@
 import { DragHandlers, motion, MotionProps } from "framer-motion";
 import { css } from "@emotion/css";
 import React from "react";
-import { colors } from "./colors";
+import { colors, theme } from "./theme";
 
 type FramerMotionProps = Pick<MotionProps, "style" | "onDragEnd" | "animate">;
 
@@ -12,16 +12,16 @@ type Props = {
 export const Card = ({ word, style, onDragEnd, animate }: Props) => (
   <motion.div
     className={css({
-      cursor: 'grab',
+      cursor: "grab",
       position: "absolute",
       left: "50%",
       top: 0,
       height: 300,
       width: 300,
-      borderRadius: 15,
+      borderRadius: theme.borderRadius,
       color: colors.text,
       display: "grid",
-      marginLeft: "-160px",
+      marginLeft: -160,
       placeItems: "center center",
       padding: 10,
     })}
