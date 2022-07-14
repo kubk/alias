@@ -12,6 +12,7 @@ type Props = {
 export const Card = ({ word, style, onDragEnd, animate }: Props) => (
   <motion.div
     className={css({
+      cursor: 'grab',
       position: "absolute",
       left: "50%",
       top: 0,

@@ -15,7 +15,7 @@ export const Countdown = observer(() => {
         <div
           className={css({
             color: isWarning ? colors.error : colors.text,
-            fontSize: 72,
+            fontSize: 48,
           })}
         >
           <motion.div
