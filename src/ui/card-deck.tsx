@@ -5,11 +5,11 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { colors } from "./theme";
 import { Card } from "./card";
 import { observer } from "mobx-react-lite";
 import { css } from "@emotion/css";
-import { store } from "./store";
+import { colors } from "../lib/theme";
+import { store } from "../store/store";
 
 const swipeOffset = 100;
 const swipeBorder = 175;

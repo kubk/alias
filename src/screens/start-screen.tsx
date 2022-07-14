@@ -1,14 +1,14 @@
 import React from "react";
-import { Modal } from "./modal";
 import { css } from "@emotion/css";
-import { store } from "./store";
 import { observer } from "mobx-react-lite";
-import { Button } from "./button";
-import { colors } from "./theme";
+import { store } from "../store/store";
+import { Button } from "../ui/button";
+import { Modal } from "../ui/modal";
+import { colors } from "../lib/theme";
 
-export const StartModal = observer(() => {
+export const StartScreen = observer(() => {
   return (
-    <Modal isVisible={store.screen === "start-modal"}>
+    <Modal>
       <div
         className={css({
           display: "flex",
@@ -28,7 +28,7 @@ export const StartModal = observer(() => {
             alignItems: "center",
           })}
         >
-          {[3, 30, 60, 90].map((item, i) => (
+          {[10, 30, 60, 90].map((item, i) => (
             <label key={i}>
               <input
                 type="radio"

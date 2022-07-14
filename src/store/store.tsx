@@ -1,7 +1,7 @@
 import { action, makeAutoObservable } from "mobx";
 import { makeLoggable } from "mobx-log";
-import { getRandomWord } from "./get-random-word";
 import { assert } from "ts-essentials";
+import { getRandomWord } from "../get-random-word";
 
 type Screen = "start-modal" | "game" | "finish";
 

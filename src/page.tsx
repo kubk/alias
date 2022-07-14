@@ -1,51 +1,17 @@
 import React from "react";
-import { css } from "@emotion/css";
-import { CardDeck } from "./card-deck";
 import { observer } from "mobx-react-lite";
-import { colors } from "./theme";
-import { store } from "./store";
-import { Counter } from "./counter";
-import { Countdown } from "./countdown";
-import { StartModal } from "./start-modal";
-import { FinishModal } from "./finish-modal";
+import { StartScreen } from "./screens/start-screen";
+import { GameScreen } from "./screens/game-screen";
+import { FinishScreen } from "./screens/finish-screen";
+import { store } from "./store/store";
+import { AnimatePresence } from "./lib/animate-presence";
 
 export const Page = observer(() => {
   return (
-    <div
-      className={css({
-        display: "flex",
-        flexDirection: "column",
-      })}
-    >
-      <StartModal />
-      <FinishModal />
-      <div
-        className={css({
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 16,
-        })}
-      >
-        <Countdown />
-      </div>
-
-      <div
-        className={css({
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 24,
-        })}
-      >
-        <CardDeck />
-      </div>
-
-      <div
-        className={css({ display: "flex", justifyContent: "center", gap: 48 })}
-      >
-        <Counter color={colors.error} value={store.skipped.length} />
-        <Counter color={colors.success} value={store.guessed.length} />
-      </div>
-    </div>
+    <AnimatePresence exitBeforeEnter>
+      {store.screen === "start-modal" && <StartScreen />}
+      {store.screen === "finish" && <FinishScreen />}
+      {store.screen === "game" && <GameScreen />}
+    </AnimatePresence>
   );
 });

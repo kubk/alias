@@ -1,7 +1,7 @@
 import { DragHandlers, motion, MotionProps } from "framer-motion";
 import { css } from "@emotion/css";
 import React from "react";
-import { colors, theme } from "./theme";
+import { colors, theme } from "../lib/theme";
 
 type FramerMotionProps = Pick<MotionProps, "style" | "onDragEnd" | "animate">;
 

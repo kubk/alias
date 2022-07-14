@@ -1,23 +1,26 @@
 import React from "react";
-import { Modal } from "./modal";
 import { css, cx } from "@emotion/css";
-import { store } from "./store";
 import { observer } from "mobx-react-lite";
-import { Button } from "./button";
-import { colors } from "./theme";
-import { reset } from "./reset";
+import { store } from "../store/store";
+import { Button } from "../ui/button";
+import { reset } from "../lib/reset";
+import { Modal } from "../ui/modal";
+import { colors } from "../lib/theme";
 
-export const FinishModal = observer(() => {
+export const FinishScreen = observer(() => {
   return (
-    <Modal isVisible={store.screen === "finish"} id={"finalModal"}>
+    <Modal>
       <div
         className={css({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          zIndex: 11,
         })}
       >
-        <span className={css({ fontSize: 36 })}>Result</span>
+        <span className={css({ fontSize: 36 })}>
+          Result — {store.guessed.length}
+        </span>
 
         <div
           className={css({
@@ -29,22 +32,30 @@ export const FinishModal = observer(() => {
           })}
         >
           <ul className={cx(reset.ul)}>
-            <li>Skipped ({store.skipped.length}): </li>
+            <li>Skipped — {store.skipped.length}</li>
             {store.skipped.map((word) => (
               <li
                 key={word}
-                className={css({ color: colors.error, fontWeight: 600 })}
+                className={css({
+                  color: colors.error,
+                  fontWeight: 600,
+                  textTransform: "capitalize",
+                })}
               >
                 {word}
               </li>
             ))}
           </ul>
           <ul className={cx(reset.ul)}>
-            <li>Guessed ({store.guessed.length}): </li>
+            <li>Guessed — {store.guessed.length}</li>
             {store.guessed.map((word) => (
               <li
                 key={word}
-                className={css({ color: colors.success, fontWeight: 600 })}
+                className={css({
+                  color: colors.success,
+                  fontWeight: 600,
+                  textTransform: "capitalize",
+                })}
               >
                 {word}
               </li>
@@ -56,11 +67,6 @@ export const FinishModal = observer(() => {
         <Button
           mainColor={colors.success}
           onClick={() => {
-            // A little workaround due to final-form not removing modal correctly
-            setTimeout(() => {
-              document.getElementById("finalModal")?.remove();
-            }, 1000);
-
             store.restart();
           }}
         >

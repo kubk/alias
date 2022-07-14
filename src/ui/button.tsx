@@ -1,8 +1,8 @@
 import { css, cx } from "@emotion/css";
 import React, { useMemo } from "react";
 import { colord } from "colord";
-import { reset } from "./reset";
-import { colors, theme } from "./theme";
+import { reset } from "../lib/reset";
+import { colors, theme } from "../lib/theme";
 
 type Props = {
   mainColor: string;
