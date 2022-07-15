@@ -12,6 +12,7 @@ export const GameScreen = observer(() => (
     className={css({
       display: "flex",
       flexDirection: "column",
+      height: "100vh",
     })}
   >
     <div

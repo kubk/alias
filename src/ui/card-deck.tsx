@@ -11,8 +11,8 @@ import { css } from "@emotion/css";
 import { colors } from "../lib/theme";
 import { store } from "../store/store";
 
-const swipeOffset = 100;
-const swipeBorder = 175;
+const swipeOffset = 50;
+const swipeBorder = 80;
 
 export const CardDeck = observer(() => {
   const [animationX, setAnimationX] = useState({ x: 0 });
@@ -33,6 +33,7 @@ export const CardDeck = observer(() => {
     [-swipeBorder, 0, swipeBorder],
     [colors.error, colors.card, colors.success]
   );
+  const rotate = useTransform(x, [-swipeBorder, 0, swipeBorder], [-10, 0, 10]);
   const boxShadow = useMotionTemplate`0 ${shadowBlur}px 25px -5px rgba(0, 0, 0, ${shadowOpacity})`;
 
   const animateCardSwipe = (animation: { x: number }) => {
@@ -42,7 +43,7 @@ export const CardDeck = observer(() => {
       setAnimationX({ x: 0 });
       x.set(0);
       store.addRandomCard();
-    }, 0);
+    });
   };
 
   const onDragEnd = (info: PanInfo, word: string) => {
@@ -76,6 +77,7 @@ export const CardDeck = observer(() => {
                 x,
                 zIndex: index,
                 backgroundColor,
+                rotate,
               }}
               onDragEnd={(e, info) => onDragEnd(info, card)}
               animate={animationX}

@@ -1,4 +1,4 @@
-import { DragHandlers, motion, MotionProps } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import { css } from "@emotion/css";
 import React from "react";
 import { colors, theme } from "../lib/theme";
@@ -16,12 +16,12 @@ export const Card = ({ word, style, onDragEnd, animate }: Props) => (
       position: "absolute",
       left: "50%",
       top: 0,
-      height: 300,
-      width: 300,
+      height: 290,
+      width: 290,
       borderRadius: theme.borderRadius,
       color: colors.text,
       display: "grid",
-      marginLeft: -160,
+      marginLeft: -155,
       placeItems: "center center",
       padding: 10,
     })}
@@ -39,6 +39,7 @@ export const Card = ({ word, style, onDragEnd, animate }: Props) => (
         fontSize: 48,
         fontWeight: 600,
         textTransform: "capitalize",
+        wordBreak: "break-all",
       })}
     >
       {word}

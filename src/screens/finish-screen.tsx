@@ -9,7 +9,7 @@ import { colors } from "../lib/theme";
 
 export const FinishScreen = observer(() => {
   return (
-    <Modal>
+    <Modal marginTop={"16px"}>
       <div
         className={css({
           display: "flex",
