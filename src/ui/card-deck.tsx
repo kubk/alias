@@ -15,35 +15,43 @@ const swipeOffset = 50;
 const swipeBorder = 80;
 
 export const CardDeck = observer(() => {
-  const [animationX, setAnimationX] = useState({ x: 0 });
+  const [frontCardX, setFrontCardX] = useState(0);
   const x = useMotionValue(0);
-  const scale = useTransform(x, [-swipeBorder, 0, swipeBorder], [1, 0.5, 1]);
-  const shadowBlur = useTransform(
+  const scaleBelowCard = useTransform(
+    x,
+    [-swipeBorder, 0, swipeBorder],
+    [1, 0.5, 1]
+  );
+  const shadowBlurBelowCard = useTransform(
     x,
     [-swipeBorder, 0, swipeBorder],
     [0, 25, 0]
   );
-  const shadowOpacity = useTransform(
+  const shadowOpacityBelowCard = useTransform(
     x,
     [-swipeBorder, 0, swipeBorder],
     [0, 0.2, 0]
   );
-  const backgroundColor = useTransform(
+  const backgroundColorFrontCard = useTransform(
     x,
     [-swipeBorder, 0, swipeBorder],
     [colors.error, colors.card, colors.success]
   );
-  const rotate = useTransform(x, [-swipeBorder, 0, swipeBorder], [-10, 0, 10]);
-  const boxShadow = useMotionTemplate`0 ${shadowBlur}px 25px -5px rgba(0, 0, 0, ${shadowOpacity})`;
+  const rotateFrontCard = useTransform(
+    x,
+    [-swipeBorder, 0, swipeBorder],
+    [-10, 0, 10]
+  );
+  const boxShadowBelowCard = useMotionTemplate`0 ${shadowBlurBelowCard}px 25px -5px rgba(0, 0, 0, ${shadowOpacityBelowCard})`;
 
-  const animateCardSwipe = (animation: { x: number }) => {
-    setAnimationX(animation);
+  const animateCardSwipe = (newFrontCardX: number) => {
+    setFrontCardX(newFrontCardX);
 
     setTimeout(() => {
-      setAnimationX({ x: 0 });
+      setFrontCardX(0);
       x.set(0);
       store.addRandomCard();
-    });
+    }, 500);
   };
 
   const onDragEnd = (info: PanInfo, word: string) => {
@@ -51,24 +59,26 @@ export const CardDeck = observer(() => {
     const isSkip = info.offset.x <= -swipeOffset;
     if (isSkip) {
       store.addToSkipped(word);
-      animateCardSwipe({ x: swipeBorder });
+      animateCardSwipe(-swipeBorder * 5);
     }
     if (isCorrect) {
       store.addToCorrect(word);
-      animateCardSwipe({ x: -swipeBorder });
+      animateCardSwipe(swipeBorder * 5);
     }
   };
 
   return (
     <div
       className={css({
-        height: 350,
+        height: 400,
         position: "relative",
         width: "100%",
+        marginTop: 25,
       })}
     >
       {store.cards.map((card, index) => {
-        if (index === store.cards.length - 1) {
+        const isInFront = index === store.cards.length - 1;
+        if (isInFront) {
           return (
             <Card
               word={card}
@@ -76,11 +86,11 @@ export const CardDeck = observer(() => {
               style={{
                 x,
                 zIndex: index,
-                backgroundColor,
-                rotate,
+                backgroundColor: backgroundColorFrontCard,
+                rotate: rotateFrontCard,
               }}
               onDragEnd={(e, info) => onDragEnd(info, card)}
-              animate={animationX}
+              animate={{ x: frontCardX }}
             />
           );
         }
@@ -90,8 +100,8 @@ export const CardDeck = observer(() => {
             word={card}
             key={index}
             style={{
-              scale,
-              boxShadow,
+              scale: scaleBelowCard,
+              boxShadow: boxShadowBelowCard,
               zIndex: index,
             }}
           />

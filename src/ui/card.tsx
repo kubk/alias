@@ -31,7 +31,6 @@ export const Card = ({ word, style, onDragEnd, animate }: Props) => (
     animate={animate}
     style={{ ...style, background: colors.card }}
     transition={{ ease: [0.6, 0.05, -0.01, 0.9] }}
-    whileTap={{ scale: 0.85 }}
   >
     <p
       className={css({
