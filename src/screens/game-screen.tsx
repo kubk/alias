@@ -19,7 +19,7 @@ export const GameScreen = observer(() => (
       className={css({
         display: "flex",
         justifyContent: "center",
-        marginTop: 16,
+        marginTop: 32,
       })}
     >
       <Countdown />
