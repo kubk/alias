@@ -12,7 +12,7 @@ export class Store {
   secondsLeft = 60;
   lastSecondsPerRound?: number;
   screen: Screen = "start-modal";
-  private intervalId?: number;
+  private intervalId?: NodeJS.Timer;
 
   constructor() {
     makeAutoObservable(this);
