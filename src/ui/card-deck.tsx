@@ -37,6 +37,11 @@ export const CardDeck = observer(() => {
     [-swipeBorder, 0, swipeBorder],
     [colors.error, colors.card, colors.success]
   );
+  const opacityFrontCard = useTransform(
+    x,
+    [-swipeBorder * 5, -swipeBorder * 3.5, 0, swipeBorder * 3.5, swipeBorder * 5],
+    [0, 1, 1, 1, 0]
+  );
   const rotateFrontCard = useTransform(
     x,
     [-swipeBorder, 0, swipeBorder],
@@ -88,6 +93,7 @@ export const CardDeck = observer(() => {
                 zIndex: index,
                 backgroundColor: backgroundColorFrontCard,
                 rotate: rotateFrontCard,
+                opacity: opacityFrontCard,
               }}
               onDragEnd={(e, info) => onDragEnd(info, card)}
               animate={{ x: frontCardX }}
