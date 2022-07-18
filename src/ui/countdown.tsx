@@ -7,13 +7,11 @@ import { colors } from "../lib/theme";
 import { AnimatePresence } from "../lib/animate-presence";
 
 export const Countdown = observer(() => {
-  const isWarning = store.secondsLeft <= 10;
-
   return (
     <AnimatePresence>
       <div
         className={css({
-          color: isWarning ? colors.error : colors.text,
+          color: store.isWarning ? colors.error : colors.text,
           fontSize: 48,
         })}
       >

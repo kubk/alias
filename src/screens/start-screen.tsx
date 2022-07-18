@@ -33,9 +33,9 @@ export const StartScreen = observer(() => {
               <input
                 type="radio"
                 name="time"
-                checked={store.secondsLeft === item}
+                checked={store.secondsPerRound === item}
                 onChange={() => {
-                  store.changeSecondsType(item);
+                  store.changeSecondsPerRound(item);
                 }}
               />
               <span>{item}</span>
