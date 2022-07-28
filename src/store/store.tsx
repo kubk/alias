@@ -13,6 +13,7 @@ export class Store {
   secondsPerRound = 60;
   secondsLeft?: number;
   screen: Screen = "start-modal";
+  isWaitingLastWord = false;
   private intervalId?: NodeJS.Timer;
 
   constructor() {
@@ -32,13 +33,20 @@ export class Store {
 
   addToSkipped(word: string) {
     this.skipped.push(word);
+    if (this.isWaitingLastWord) {
+      this.screen = "finish";
+    }
   }
 
   addToCorrect(word: string) {
     this.guessed.push(word);
+    if (this.isWaitingLastWord) {
+      this.screen = "finish";
+    }
   }
 
   startTimer() {
+    this.isWaitingLastWord = false;
     this.screen = "game";
     this.secondsLeft = this.secondsPerRound;
     this.intervalId = setInterval(
@@ -48,7 +56,7 @@ export class Store {
         if (this.secondsLeft === 0) {
           assert(this.intervalId);
           clearInterval(this.intervalId);
-          this.screen = "finish";
+          this.isWaitingLastWord = true;
         }
       }),
       1000
@@ -67,10 +75,10 @@ export class Store {
   }
 
   get isWarning() {
-    if (!this.secondsLeft) {
+    if (this.secondsLeft === undefined) {
       return false;
     }
-    return this.secondsLeft <= 10
+    return this.secondsLeft <= 10;
   }
 }
 

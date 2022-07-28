@@ -5,6 +5,7 @@ import { store } from "../store/store";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { colors } from "../lib/theme";
+import { motion } from "framer-motion";
 
 export const StartScreen = observer(() => {
   return (
@@ -16,7 +17,7 @@ export const StartScreen = observer(() => {
           alignItems: "center",
         })}
       >
-        <span className={css({ fontSize: 36 })}>Alias</span>
+        <span className={css({ fontSize: 36 })}>Alias game</span>
         <p className={css({ fontSize: 18, marginBottom: 0, paddingBottom: 8 })}>
           Seconds per round
         </p>
@@ -28,7 +29,7 @@ export const StartScreen = observer(() => {
             alignItems: "center",
           })}
         >
-          {[10, 30, 60, 90].map((item, i) => (
+          {[10, 60, 90].map((item, i) => (
             <label key={i}>
               <input
                 type="radio"
@@ -50,7 +51,19 @@ export const StartScreen = observer(() => {
             store.startTimer();
           }}
         >
-          <span className={css({ fontWeight: 600, fontSize: 18 })}>Start!</span>
+          <motion.div
+            initial={{ opacity: 0.3 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.3 }}
+            className={css({ fontWeight: 600, fontSize: 20 })}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 0.3,
+            }}
+          >
+            Start!
+          </motion.div>
         </Button>
       </div>
     </Modal>

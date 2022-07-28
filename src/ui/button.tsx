@@ -24,7 +24,7 @@ export const Button = (props: Props) => {
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: mainColor,
-          cursor: 'pointer',
+          cursor: "pointer",
           ":hover": {
             backgroundColor: parsedColor.darken(0.1).toHex(),
           },
