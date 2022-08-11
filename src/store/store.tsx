@@ -17,7 +17,7 @@ export class Store {
   private intervalId?: NodeJS.Timer;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
     makeLoggable(this);
     makePersistable(this, {
       name: this.constructor.name,
@@ -49,18 +49,17 @@ export class Store {
     this.isWaitingLastWord = false;
     this.screen = "game";
     this.secondsLeft = this.secondsPerRound;
-    this.intervalId = setInterval(
-      action(() => {
-        assert(this.secondsLeft);
-        this.secondsLeft--;
-        if (this.secondsLeft === 0) {
-          assert(this.intervalId);
-          clearInterval(this.intervalId);
-          this.isWaitingLastWord = true;
-        }
-      }),
-      1000
-    );
+    this.intervalId = setInterval(this.handleTimerTick, 1000);
+  }
+
+  private handleTimerTick() {
+    assert(this.secondsLeft);
+    this.secondsLeft--;
+    if (this.secondsLeft === 0) {
+      assert(this.intervalId);
+      clearInterval(this.intervalId);
+      this.isWaitingLastWord = true;
+    }
   }
 
   changeSecondsPerRound(seconds: number) {
@@ -81,5 +80,3 @@ export class Store {
     return this.secondsLeft <= 10;
   }
 }
-
-export const store = new Store();

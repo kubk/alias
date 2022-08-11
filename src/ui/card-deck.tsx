@@ -9,12 +9,13 @@ import { Card } from "./card";
 import { observer } from "mobx-react-lite";
 import { css } from "@emotion/css";
 import { colors } from "../lib/theme";
-import { store } from "../store/store";
+import { useStore } from "../store/store-context";
 
 const swipeOffset = 50;
 const swipeBorder = 80;
 
 export const CardDeck = observer(() => {
+  const store = useStore();
   const [frontCardX, setFrontCardX] = useState(0);
   const x = useMotionValue(0);
   const scaleBelowCard = useTransform(

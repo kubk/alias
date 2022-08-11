@@ -1,13 +1,14 @@
 import React from "react";
 import { css, cx } from "@emotion/css";
 import { observer } from "mobx-react-lite";
-import { store } from "../store/store";
 import { Button } from "../ui/button";
 import { reset } from "../lib/reset";
 import { Modal } from "../ui/modal";
 import { colors } from "../lib/theme";
+import { useStore } from "../store/store-context";
 
 export const FinishScreen = observer(() => {
+  const store = useStore();
   return (
     <Modal marginTop={"32px"}>
       <div

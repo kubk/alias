@@ -2,11 +2,12 @@ import { observer } from "mobx-react-lite";
 import { motion } from "framer-motion";
 import { css } from "@emotion/css";
 import React from "react";
-import { store } from "../store/store";
 import { colors } from "../lib/theme";
 import { AnimatePresence } from "../lib/animate-presence";
+import { useStore } from "../store/store-context";
 
 export const Countdown = observer(() => {
+  const store = useStore();
   return (
     <AnimatePresence>
       <div
