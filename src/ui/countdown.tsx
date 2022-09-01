@@ -4,10 +4,9 @@ import { css } from "@emotion/css";
 import React from "react";
 import { colors } from "../lib/theme";
 import { AnimatePresence } from "../lib/animate-presence";
-import { useStore } from "../store/store-context";
+import { store } from "../store/store";
 
 export const Countdown = observer(() => {
-  const store = useStore();
   return (
     <AnimatePresence>
       <div

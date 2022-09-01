@@ -5,10 +5,9 @@ import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { colors } from "../lib/theme";
 import { motion } from "framer-motion";
-import { useStore } from "../store/store-context";
+import { store } from "../store/store";
 
 export const StartScreen = observer(() => {
-  const store = useStore();
   return (
     <Modal>
       <div

@@ -80,3 +80,5 @@ export class Store {
     return this.secondsLeft <= 10;
   }
 }
+
+export const store = new Store();

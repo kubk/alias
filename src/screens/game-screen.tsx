@@ -5,10 +5,9 @@ import { Counter } from "../ui/counter";
 import { Countdown } from "../ui/countdown";
 import { CardDeck } from "../ui/card-deck";
 import { colors } from "../lib/theme";
-import { useStore } from "../store/store-context";
+import { store } from "../store/store";
 
 export const GameScreen = observer(() => {
-  const store = useStore();
   return (
     <div
       className={css({

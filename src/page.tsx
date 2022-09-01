@@ -4,10 +4,9 @@ import { StartScreen } from "./screens/start-screen";
 import { GameScreen } from "./screens/game-screen";
 import { FinishScreen } from "./screens/finish-screen";
 import { AnimatePresence } from "./lib/animate-presence";
-import { useStore } from "./store/store-context";
+import { store } from "./store/store";
 
 export const Page = observer(() => {
-  const store = useStore();
   return (
     <AnimatePresence exitBeforeEnter>
       {store.screen === "start-modal" && <StartScreen />}
