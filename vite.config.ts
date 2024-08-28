@@ -11,7 +11,7 @@ export default defineConfig({
     },
     manifest: {
       name: 'Alias game',
-      theme_color: '#fdecc7',
+      theme_color: '#e7d0a4',
     }
   })],
   base: '/alias/',
