@@ -8,6 +8,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html, body {
+  overscroll-behavior: none;
+}
+
 body {
   margin: 0;
   height: 100vh;
