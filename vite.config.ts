@@ -6,9 +6,9 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
-    devOptions: {
-      enabled: true,
-    },
+    // devOptions: {
+    //   enabled: true,
+    // },
     manifest: {
       name: 'Alias game',
       theme_color: '#e7d0a4',
