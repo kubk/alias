@@ -29,7 +29,7 @@ export const StartScreen = observer(() => {
             alignItems: "center",
           })}
         >
-          {[10, 60, 90].map((item, i) => (
+          {[10, 30, 60, 90].map((item, i) => (
             <label key={i}>
               <input
                 type="radio"
