@@ -3,6 +3,7 @@ import { Card } from "./card";
 import { css } from "@emotion/css";
 import { colors } from "../lib/theme";
 import { store } from "../store/store";
+import { Button } from "./button";
 
 const swipeBorder = 80;
 
@@ -27,7 +28,9 @@ export function CardDeck() {
     setTimeout(() => {
       setIsAnimating(false);
       setExitDirection(null);
-      store.addRandomCard();
+      setTimeout(() => {
+        store.addRandomCard();
+      }, 0);
     }, 500);
   };
 
@@ -140,48 +143,20 @@ export function CardDeck() {
           width: 310,
         })}
       >
-        <button
+        <Button
           onClick={handleSkip}
-          disabled={isAnimating}
-          className={css({
-            flex: 1,
-            backgroundColor: colors.error,
-            color: colors.white,
-            border: "none",
-            borderRadius: 15,
-            fontSize: 16,
-            fontWeight: "bold",
-            padding: 16,
-            cursor: "pointer",
-            transition: "transform 0.1s ease",
-            ":active": {
-              transform: "scale(0.95)",
-            },
-          })}
+          mainColor={colors.error}
+          className={css({ flex: 1 })}
         >
           Skip
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={handleCorrect}
-          disabled={isAnimating}
-          className={css({
-            flex: 1,
-            backgroundColor: colors.success,
-            color: colors.white,
-            border: "none",
-            padding: 16,
-            borderRadius: 15,
-            fontSize: 16,
-            fontWeight: "bold",
-            cursor: "pointer",
-            transition: "transform 0.1s ease",
-            ":active": {
-              transform: "scale(0.95)",
-            },
-          })}
+          mainColor={colors.success}
+          className={css({ flex: 1 })}
         >
           Correct
-        </button>
+        </Button>
       </div>
     </div>
   );

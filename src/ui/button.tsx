@@ -25,29 +25,18 @@ export function Button(props: Props) {
           alignItems: "center",
           backgroundColor: mainColor,
           cursor: "pointer",
-          ":hover": {
-            backgroundColor: parsedColor.darken(0.1).toHex(),
-          },
-          ":focus": {
-            boxShadow: `0 0 0 0.2rem ${parsedColor.alpha(0.4).toHex()}`,
-          },
           ":active": {
-            backgroundColor: parsedColor.darken(0.1).toHex(),
-          },
-          ":disabled": {
-            backgroundColor: parsedColor.lighten(0.15).toHex(),
-            cursor: "not-allowed",
+            transform: "scale(0.95)",
           },
           color: colors.white,
-          fontWeight: 400,
+          fontWeight: "bold",
           fontSize: 16,
           lineHeight: 1.5,
-          padding: "0.45rem 0.75rem",
+          padding: 16,
+          border: "none",
+          borderRadius: 15,
           userSelect: "none",
-          transitionDuration: "0.2s",
-          transitionTimingFunction: "ease-in-out",
-          transitionProperty: "background-color, border, box-shadow, color",
-          borderRadius: theme.borderRadius,
+          transition: "transform 0.1s ease",
         }),
         className
       )}
