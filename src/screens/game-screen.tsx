@@ -30,6 +30,7 @@ export function GameScreen() {
           display: "flex",
           justifyContent: "center",
           marginTop: 24,
+          paddingTop: 40,
         })}
       >
         <CardDeck />
@@ -40,6 +41,7 @@ export function GameScreen() {
           display: "flex",
           justifyContent: "center",
           gap: 48,
+          marginTop: 32,
         })}
       >
         <Counter color={colors.error} value={store.skipped.length} />

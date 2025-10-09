@@ -2,17 +2,16 @@ import { motion, MotionProps } from "framer-motion";
 import { css } from "@emotion/css";
 import { colors, theme } from "../lib/theme";
 
-type FramerMotionProps = Pick<MotionProps, "style" | "onDragEnd" | "animate">;
+type FramerMotionProps = Pick<MotionProps, "style" | "animate">;
 
 type Props = {
   word: string;
 } & FramerMotionProps;
 
-export function Card({ word, style, onDragEnd, animate }: Props) {
+export function Card({ word, style, animate }: Props) {
   return (
     <motion.div
       className={css({
-        cursor: "grab",
         position: "absolute",
         left: "50%",
         top: 0,
@@ -25,11 +24,8 @@ export function Card({ word, style, onDragEnd, animate }: Props) {
         placeItems: "center center",
         padding: 10,
       })}
-      drag={"x"}
-      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      onDragEnd={onDragEnd}
       animate={animate}
-      style={{ ...style, background: colors.card }}
+      style={{ backgroundColor: colors.card, ...style }}
       transition={{ ease: [0.6, 0.05, -0.01, 0.9] }}
     >
       <p

@@ -1,123 +1,188 @@
 import { useState } from "react";
-import {
-  PanInfo,
-  useMotionTemplate,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
 import { Card } from "./card";
 import { css } from "@emotion/css";
 import { colors } from "../lib/theme";
 import { store } from "../store/store";
 
-const swipeOffset = 50;
 const swipeBorder = 80;
 
 export function CardDeck() {
-  const [frontCardX, setFrontCardX] = useState(0);
-  const x = useMotionValue(0);
-  const scaleBelowCard = useTransform(
-    x,
-    [-swipeBorder, 0, swipeBorder],
-    [1, 0.5, 1]
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [exitDirection, setExitDirection] = useState<"left" | "right" | null>(
+    null
   );
-  const shadowBlurBelowCard = useTransform(
-    x,
-    [-swipeBorder, 0, swipeBorder],
-    [0, 25, 0]
-  );
-  const shadowOpacityBelowCard = useTransform(
-    x,
-    [-swipeBorder, 0, swipeBorder],
-    [0, 0.2, 0]
-  );
-  const backgroundColorFrontCard = useTransform(
-    x,
-    [-swipeBorder, 0, swipeBorder],
-    [colors.error, colors.card, colors.success]
-  );
-  const opacityFrontCard = useTransform(
-    x,
-    [
-      -swipeBorder * 5,
-      -swipeBorder * 3.5,
-      0,
-      swipeBorder * 3.5,
-      swipeBorder * 5,
-    ],
-    [0, 1, 1, 1, 0]
-  );
-  const rotateFrontCard = useTransform(
-    x,
-    [-swipeBorder, 0, swipeBorder],
-    [-10, 0, 10]
-  );
-  const boxShadowBelowCard = useMotionTemplate`0 ${shadowBlurBelowCard}px 25px -5px rgba(0, 0, 0, ${shadowOpacityBelowCard})`;
 
-  const animateCardSwipe = (newFrontCardX: number) => {
-    setFrontCardX(newFrontCardX);
+  const animateCardExit = (direction: "left" | "right", word: string) => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+    setExitDirection(direction);
+
+    if (direction === "left") {
+      store.addToSkipped(word);
+    } else {
+      store.addToCorrect(word);
+    }
 
     setTimeout(() => {
-      setFrontCardX(0);
-      x.set(0);
+      setIsAnimating(false);
+      setExitDirection(null);
       store.addRandomCard();
     }, 500);
   };
 
-  const onDragEnd = (info: PanInfo, word: string) => {
-    const isCorrect = info.offset.x >= swipeOffset;
-    const isSkip = info.offset.x <= -swipeOffset;
-    if (isSkip) {
-      store.addToSkipped(word);
-      animateCardSwipe(-swipeBorder * 5);
+  const getCurrentCard = () => {
+    return store.cards[store.cards.length - 1];
+  };
+
+  const handleSkip = () => {
+    const currentCard = getCurrentCard();
+    if (currentCard) {
+      animateCardExit("left", currentCard);
     }
-    if (isCorrect) {
-      store.addToCorrect(word);
-      animateCardSwipe(swipeBorder * 5);
+  };
+
+  const handleCorrect = () => {
+    const currentCard = getCurrentCard();
+    if (currentCard) {
+      animateCardExit("right", currentCard);
     }
   };
 
   return (
     <div
       className={css({
-        height: 400,
-        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         width: "100%",
-        marginTop: 25,
       })}
     >
-      {store.cards.map((card, index) => {
-        const isInFront = index === store.cards.length - 1;
-        if (isInFront) {
+      <div
+        className={css({
+          position: "relative",
+          width: "100%",
+          height: 290,
+        })}
+      >
+        {store.cards.map((card, index) => {
+          const isInFront = index === store.cards.length - 1;
+          const isBelowCard = index === store.cards.length - 2;
+
+          if (isInFront) {
+            const targetX = exitDirection
+              ? exitDirection === "left"
+                ? -swipeBorder * 5
+                : swipeBorder * 5
+              : 0;
+            const targetOpacity = exitDirection ? 0 : 1;
+            const targetRotate = exitDirection
+              ? exitDirection === "left"
+                ? -10
+                : 10
+              : 0;
+            const backgroundColor = exitDirection
+              ? exitDirection === "left"
+                ? colors.error
+                : colors.success
+              : colors.card;
+
+            return (
+              <Card
+                word={card}
+                key={card}
+                style={{
+                  zIndex: index,
+                  backgroundColor,
+                }}
+                animate={{
+                  x: targetX,
+                  opacity: targetOpacity,
+                  rotate: targetRotate,
+                }}
+              />
+            );
+          }
+
+          if (isBelowCard) {
+            return (
+              <Card
+                word={card}
+                key={card}
+                style={{
+                  zIndex: index,
+                }}
+                animate={{
+                  scale: isAnimating ? 1 : 0.9,
+                }}
+              />
+            );
+          }
+
           return (
             <Card
               word={card}
-              key={index}
+              key={card}
               style={{
-                x,
                 zIndex: index,
-                backgroundColor: backgroundColorFrontCard,
-                rotate: rotateFrontCard,
-                opacity: opacityFrontCard,
+                scale: 0.9,
               }}
-              onDragEnd={(e, info) => onDragEnd(info, card)}
-              animate={{ x: frontCardX }}
             />
           );
-        }
+        })}
+      </div>
 
-        return (
-          <Card
-            word={card}
-            key={index}
-            style={{
-              scale: scaleBelowCard,
-              boxShadow: boxShadowBelowCard,
-              zIndex: index,
-            }}
-          />
-        );
-      })}
+      <div
+        className={css({
+          display: "flex",
+          gap: 12,
+          marginTop: 48,
+          width: 310,
+        })}
+      >
+        <button
+          onClick={handleSkip}
+          disabled={isAnimating}
+          className={css({
+            flex: 1,
+            backgroundColor: colors.error,
+            color: colors.white,
+            border: "none",
+            borderRadius: 15,
+            fontSize: 16,
+            fontWeight: "bold",
+            padding: 16,
+            cursor: "pointer",
+            transition: "transform 0.1s ease",
+            ":active": {
+              transform: "scale(0.95)",
+            },
+          })}
+        >
+          Skip
+        </button>
+        <button
+          onClick={handleCorrect}
+          disabled={isAnimating}
+          className={css({
+            flex: 1,
+            backgroundColor: colors.success,
+            color: colors.white,
+            border: "none",
+            padding: 16,
+            borderRadius: 15,
+            fontSize: 16,
+            fontWeight: "bold",
+            cursor: "pointer",
+            transition: "transform 0.1s ease",
+            ":active": {
+              transform: "scale(0.95)",
+            },
+          })}
+        >
+          Correct
+        </button>
+      </div>
     </div>
   );
 }
