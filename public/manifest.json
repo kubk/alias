@@ -6,12 +6,5 @@
   "display": "standalone",
   "background_color": "#fdecc7",
   "theme_color": "#fdecc7",
-  "orientation": "portrait",
-  "icons": [
-    {
-      "src": "/vite.svg",
-      "sizes": "any",
-      "type": "image/png"
-    }
-  ]
+  "orientation": "portrait"
 }
