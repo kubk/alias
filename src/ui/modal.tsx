@@ -24,7 +24,7 @@ export function Modal(props: Props) {
 
   return (
     <motion.div
-      className="max-w-[290px] mx-auto p-6 rounded-[15px] bg-card"
+      className="max-w-[310px] mx-auto p-6 rounded-[15px] bg-card"
       initial={"hidden"}
       animate={"visible"}
       exit={"hidden"}

@@ -5,29 +5,47 @@ import { store } from "../store/store";
 export function FinishScreen() {
   return (
     <Modal marginTop={"32px"}>
-      <div className="flex flex-col items-center z-[11]">
-        <span className="text-4xl">Result — {store.guessed.length}</span>
+      <div className="flex flex-col items-center z-[11] w-full">
+        <span className="text-5xl font-bold mb-8">
+          Score: {store.guessed.length}
+        </span>
 
-        <div className="flex w-full justify-between text-lg mt-6">
-          <ul className="list-none p-0 m-0">
-            <li>Skipped — {store.skipped.length}</li>
-            {store.skipped.map((word) => (
-              <li key={word} className="text-error font-semibold capitalize">
-                {word}
-              </li>
-            ))}
-          </ul>
-          <ul className="list-none p-0 m-0">
-            <li>Guessed — {store.guessed.length}</li>
-            {store.guessed.map((word) => (
-              <li key={word} className="text-success font-semibold capitalize">
-                {word}
-              </li>
-            ))}
-          </ul>
+        <div className="w-full mb-8 space-y-3">
+          {/* Success chips */}
+          {store.guessed.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {store.guessed.map((word) => (
+                <div
+                  key={`guess-${word}`}
+                  className="flex items-center gap-1.5 bg-success/10 px-3 py-1.5 rounded-lg"
+                >
+                  <span className="text-success text-sm">✓</span>
+                  <span className="text-success font-semibold capitalize">
+                    {word}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Skipped chips */}
+          {store.skipped.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {store.skipped.map((word) => (
+                <div
+                  key={`skip-${word}`}
+                  className="flex items-center gap-1.5 bg-error/10 px-3 py-1.5 rounded-lg"
+                >
+                  <span className="text-error text-sm">✗</span>
+                  <span className="text-error font-semibold capitalize">
+                    {word}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="mt-9" />
         <Button
           variant="success"
           onClick={() => {

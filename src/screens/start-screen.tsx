@@ -2,26 +2,28 @@ import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { motion } from "framer-motion";
 import { store } from "../store/store";
+import { cn } from "../lib/cn";
 
 export function StartScreen() {
   return (
     <Modal>
       <div className="flex flex-col items-center">
         <span className="text-4xl">Alias game</span>
-        <p className="text mt-4 mb-0 pb-2">Seconds per round</p>
-        <div className="text-lg flex gap-[18px] items-center">
-          {[10, 30, 60, 90].map((item, i) => (
-            <label key={i} className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="time"
-                checked={store.secondsPerRound === item}
-                onChange={() => {
-                  store.changeSecondsPerRound(item);
-                }}
-              />
-              <span>{item}</span>
-            </label>
+        <p className="text mt-8 mb-0 pb-2 self-start">Seconds per round</p>
+        <div className="flex gap-3 w-full">
+          {[10, 30, 60, 90].map((seconds) => (
+            <button
+              key={seconds}
+              onClick={() => store.changeSecondsPerRound(seconds)}
+              className={cn(
+                "flex-1 h-12 rounded-lg font-bold text-lg transition-colors",
+                store.secondsPerRound === seconds
+                  ? "bg-success text-white"
+                  : "bg-card text-text hover:bg-success/20"
+              )}
+            >
+              {seconds}
+            </button>
           ))}
         </div>
 
