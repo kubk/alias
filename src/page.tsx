@@ -6,7 +6,7 @@ import { store } from "./store/store";
 
 export function Page() {
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       {store.screen === "start-modal" && <StartScreen />}
       {store.screen === "finish" && <FinishScreen />}
       {store.screen === "game" && <GameScreen />}

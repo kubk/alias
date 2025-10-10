@@ -2,7 +2,6 @@ import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { motion } from "framer-motion";
 import { store } from "../store/store";
-import { cn } from "../lib/cn";
 
 export function StartScreen() {
   return (
@@ -12,18 +11,24 @@ export function StartScreen() {
         <p className="text mt-8 mb-0 pb-2 self-start">Seconds per round</p>
         <div className="flex gap-3 w-full">
           {[10, 30, 60, 90].map((seconds) => (
-            <button
+            <motion.button
               key={seconds}
               onClick={() => store.changeSecondsPerRound(seconds)}
-              className={cn(
-                "flex-1 h-12 rounded-lg font-bold text-lg transition-colors",
-                store.secondsPerRound === seconds
-                  ? "bg-success text-white"
-                  : "bg-card text-text hover:bg-success/20"
-              )}
+              className="flex-1 h-12 rounded-lg font-bold text-lg relative bg-card"
+              animate={{
+                backgroundColor:
+                  store.secondsPerRound === seconds
+                    ? "var(--color-success)"
+                    : "var(--color-card)",
+                color:
+                  store.secondsPerRound === seconds
+                    ? "var(--color-white)"
+                    : "var(--color-text)",
+              }}
+              transition={{ duration: 0.2 }}
             >
               {seconds}
-            </button>
+            </motion.button>
           ))}
         </div>
 
