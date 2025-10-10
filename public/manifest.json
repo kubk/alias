@@ -2,7 +2,7 @@
   "name": "Alias game",
   "short_name": "Alias game",
   "description": "Alias game",
-  "start_url": "/",
+  "start_url": "/alias",
   "display": "standalone",
   "background_color": "#fdecc7",
   "theme_color": "#fdecc7",
