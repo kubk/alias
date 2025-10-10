@@ -7,6 +7,7 @@ export function AnimatePresence(props: {
 }) {
   return (
     <div>
+      {/* @ts-ignore */}
       <FramerMotionAnimatePresence initial={props.initial}>
         {props.children}
       </FramerMotionAnimatePresence>

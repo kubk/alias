@@ -10,7 +10,7 @@ export function GameScreen() {
         <Countdown />
       </div>
 
-      <div className="overflow-hidden flex justify-center mt-6 pt-10">
+      <div className="overflow-hidden flex justify-center pt-10">
         <CardDeck />
       </div>
 

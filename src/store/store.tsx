@@ -14,7 +14,7 @@ export class Store {
   secondsLeft?: number;
   screen: Screen = "start-modal";
   isWaitingLastWord = false;
-  private intervalId?: number;
+  private intervalId?: NodeJS.Timeout;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -26,7 +26,7 @@ export class Store {
     });
   }
 
-  addRandomCard() {
+  private addRandomCard() {
     this.cards.pop();
     this.cards.unshift(getRandomWord());
   }
@@ -36,6 +36,7 @@ export class Store {
     if (this.isWaitingLastWord) {
       this.screen = "finish";
     }
+    this.addRandomCard();
   }
 
   addToCorrect(word: string) {
@@ -43,16 +44,14 @@ export class Store {
     if (this.isWaitingLastWord) {
       this.screen = "finish";
     }
+    this.addRandomCard();
   }
 
   startTimer() {
     this.isWaitingLastWord = false;
     this.screen = "game";
     this.secondsLeft = this.secondsPerRound;
-    this.intervalId = setInterval(
-      this.handleTimerTick,
-      1000
-    ) as unknown as number;
+    this.intervalId = setInterval(this.handleTimerTick, 1000);
   }
 
   private handleTimerTick() {

@@ -2,122 +2,60 @@ import { useState } from "react";
 import { Card } from "./card";
 import { store } from "../store/store";
 import { Button } from "./button";
-
-const swipeBorder = 80;
+import { AnimatePresence } from "../lib/animate-presence";
 
 export function CardDeck() {
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [exitDirection, setExitDirection] = useState<"left" | "right" | null>(
-    null
-  );
-
-  const animateCardExit = (direction: "left" | "right", word: string) => {
-    if (isAnimating) return;
-
-    setIsAnimating(true);
-    setExitDirection(direction);
-
-    if (direction === "left") {
-      store.addToSkipped(word);
-    } else {
-      store.addToCorrect(word);
-    }
-
-    setTimeout(() => {
-      setIsAnimating(false);
-      setExitDirection(null);
-      setTimeout(() => {
-        store.addRandomCard();
-      }, 0);
-    }, 500);
-  };
-
-  const getCurrentCard = () => {
-    return store.cards[store.cards.length - 1];
-  };
+  const [index, setIndex] = useState(0);
+  const [exitX, setExitX] = useState(0);
+  const [isExiting, setIsExiting] = useState(false);
 
   const handleSkip = () => {
-    const currentCard = getCurrentCard();
-    if (currentCard) {
-      animateCardExit("left", currentCard);
+    const currentCard = store.cards[store.cards.length - 1];
+    if (currentCard && !isExiting) {
+      setIsExiting(true);
+      setExitX(-250);
+
+      setTimeout(() => {
+        store.addToSkipped(currentCard);
+        setIndex(index + 1);
+        setIsExiting(false);
+        setExitX(0);
+      }, 100);
     }
   };
 
   const handleCorrect = () => {
-    const currentCard = getCurrentCard();
-    if (currentCard) {
-      animateCardExit("right", currentCard);
+    const currentCard = store.cards[store.cards.length - 1];
+    if (currentCard && !isExiting) {
+      setIsExiting(true);
+      setExitX(250);
+
+      setTimeout(() => {
+        setIndex(index + 1);
+        setIsExiting(false);
+        setExitX(0);
+        store.addToCorrect(currentCard);
+      }, 100);
     }
   };
 
+  const currentCard = store.cards[store.cards.length - 1];
+  const nextCard = store.cards[store.cards.length - 2];
+
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="relative w-full h-[290px]">
-        {store.cards.map((card, index) => {
-          const isInFront = index === store.cards.length - 1;
-          const isBelowCard = index === store.cards.length - 2;
-
-          if (isInFront) {
-            const targetX = exitDirection
-              ? exitDirection === "left"
-                ? -swipeBorder * 5
-                : swipeBorder * 5
-              : 0;
-            const targetOpacity = exitDirection ? 0 : 1;
-            const targetRotate = exitDirection
-              ? exitDirection === "left"
-                ? -10
-                : 10
-              : 0;
-            const bgColor = exitDirection
-              ? exitDirection === "left"
-                ? ("error" as const)
-                : ("success" as const)
-              : ("card" as const);
-
-            return (
-              <Card
-                word={card}
-                key={card}
-                bgColor={bgColor}
-                style={{
-                  zIndex: index,
-                }}
-                animate={{
-                  x: targetX,
-                  opacity: targetOpacity,
-                  rotate: targetRotate,
-                }}
-              />
-            );
-          }
-
-          if (isBelowCard) {
-            return (
-              <Card
-                word={card}
-                key={card}
-                style={{
-                  zIndex: index,
-                }}
-                animate={{
-                  scale: isAnimating ? 1 : 0.9,
-                }}
-              />
-            );
-          }
-
-          return (
+      <div className="relative w-full h-[320px]">
+        <AnimatePresence initial={false}>
+          {nextCard && <Card key={nextCard} word={nextCard} isFront={false} />}
+          {currentCard && (
             <Card
-              word={card}
-              key={card}
-              style={{
-                zIndex: index,
-                scale: 0.9,
-              }}
+              key={currentCard}
+              word={currentCard}
+              isFront={true}
+              exitX={exitX}
             />
-          );
-        })}
+          )}
+        </AnimatePresence>
       </div>
 
       <div className="flex gap-3 mt-12 w-[290px]">
