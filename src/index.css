@@ -37,3 +37,7 @@ body {
     #e7d0a4 100%
   );
 }
+
+button {
+  cursor: pointer;
+}
