@@ -68,17 +68,19 @@ export class Store {
     this.secondsPerRound = seconds;
   }
 
-  playAgain() {
+  private resetGame() {
     this.skipped = [];
     this.guessed = [];
     this.cards = [getRandomWord(), getRandomWord()];
+  }
+
+  playAgain() {
+    this.resetGame();
     this.startTimer();
   }
 
   restart() {
-    this.skipped = [];
-    this.guessed = [];
-    this.cards = [getRandomWord(), getRandomWord()];
+    this.resetGame();
     this.screen = "start-modal";
   }
 
