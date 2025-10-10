@@ -4,7 +4,8 @@
   "description": "Alias game",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#fdecc7",
+  "theme_color": "#fdecc7",
   "orientation": "portrait",
   "icons": [
     {
