@@ -1,8 +1,7 @@
 import { css, cx } from "@emotion/css";
-import React, { useMemo } from "react";
-import { colord } from "colord";
+import React from "react";
 import { reset } from "../lib/reset";
-import { colors, theme } from "../lib/theme";
+import { colors } from "../lib/theme";
 
 type Props = {
   mainColor: string;
@@ -11,7 +10,6 @@ type Props = {
 
 export function Button(props: Props) {
   const { className, mainColor, ...restProps } = props;
-  const parsedColor = useMemo(() => colord(mainColor), [mainColor]);
 
   return (
     <button
