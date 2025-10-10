@@ -22,6 +22,7 @@
     "mobx-react-observer": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-textfit": "^1.1.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.14",
     "ts-essentials": "^9.2.0"
@@ -30,6 +31,7 @@
     "@types/node": "^24.7.1",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/react-textfit": "^1.1.4",
     "@vitejs/plugin-react": "^5.0.4",
     "prettier": "2.6",
     "typescript": "^4.6.4",

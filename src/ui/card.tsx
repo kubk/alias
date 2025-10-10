@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Textfit } from "react-textfit";
 import { cn } from "../lib/cn";
 
 type Props = {
@@ -29,9 +30,15 @@ export function Card({ word, isFront, exitX = 0 }: Props) {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <p className="text-center text-5xl font-semibold capitalize break-all">
-        {word}
-      </p>
+      <Textfit
+        mode="single"
+        className="w-full h-full flex items-center justify-center"
+        max={48}
+      >
+        <p className="text-center font-semibold capitalize whitespace-nowrap">
+          {word}
+        </p>
+      </Textfit>
     </motion.div>
   );
 }
