@@ -36,5 +36,11 @@
     "prettier": "2.6",
     "typescript": "^4.6.4",
     "vite": "^7.1.9"
+  },
+  "overrides": {
+    "react-textfit": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
   }
 }
