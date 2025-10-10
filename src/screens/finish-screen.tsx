@@ -1,6 +1,4 @@
-import { css, cx } from "@emotion/css";
 import { Button } from "../ui/button";
-import { reset } from "../lib/reset";
 import { Modal } from "../ui/modal";
 import { colors } from "../lib/theme";
 import { store } from "../store/store";
@@ -8,69 +6,36 @@ import { store } from "../store/store";
 export function FinishScreen() {
   return (
     <Modal marginTop={"32px"}>
-      <div
-        className={css({
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          zIndex: 11,
-        })}
-      >
-        <span className={css({ fontSize: 36 })}>
-          Result — {store.guessed.length}
-        </span>
+      <div className="flex flex-col items-center z-[11]">
+        <span className="text-4xl">Result — {store.guessed.length}</span>
 
-        <div
-          className={css({
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-            fontSize: 18,
-            marginTop: 24,
-          })}
-        >
-          <ul className={cx(reset.ul)}>
+        <div className="flex w-full justify-between text-lg mt-6">
+          <ul className="list-none p-0 m-0">
             <li>Skipped — {store.skipped.length}</li>
             {store.skipped.map((word) => (
-              <li
-                key={word}
-                className={css({
-                  color: colors.error,
-                  fontWeight: 600,
-                  textTransform: "capitalize",
-                })}
-              >
+              <li key={word} className="text-error font-semibold capitalize">
                 {word}
               </li>
             ))}
           </ul>
-          <ul className={cx(reset.ul)}>
+          <ul className="list-none p-0 m-0">
             <li>Guessed — {store.guessed.length}</li>
             {store.guessed.map((word) => (
-              <li
-                key={word}
-                className={css({
-                  color: colors.success,
-                  fontWeight: 600,
-                  textTransform: "capitalize",
-                })}
-              >
+              <li key={word} className="text-success font-semibold capitalize">
                 {word}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className={css({ marginTop: 36 })} />
+        <div className="mt-9" />
         <Button
           mainColor={colors.success}
           onClick={() => {
             store.restart();
           }}
         >
-          <span className={css({ fontWeight: 600, fontSize: 18 })}>
-            Play again!
-          </span>
+          <span className="font-semibold text-lg">Play again!</span>
         </Button>
       </div>
     </Modal>

@@ -1,3 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors from theme.tsx */
+  --color-error: #e53d00;
+  --color-success: #21a0a0;
+  --color-card: #fcfff7;
+  --color-text: #222;
+  --color-white: #fff;
+
+  /* Border radius */
+  --radius-game: 15px;
+}
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;

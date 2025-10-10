@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
-import { css } from "@emotion/css";
-import { colors } from "../lib/theme";
 import { AnimatePresence } from "../lib/animate-presence";
 import { store } from "../store/store";
+import { cn } from "../lib/cn";
 
 export function Countdown() {
   return (
     <AnimatePresence>
       <div
-        className={css({
-          color: store.isWarning ? colors.error : colors.text,
-          fontSize: 48,
-        })}
+        className={cn("text-5xl", store.isWarning ? "text-error" : "text-text")}
       >
         <motion.div
           key={store.secondsLeft}

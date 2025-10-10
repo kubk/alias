@@ -1,6 +1,5 @@
-import { css, cx } from "@emotion/css";
 import React from "react";
-import { reset } from "../lib/reset";
+import { cn } from "../lib/cn";
 import { colors } from "../lib/theme";
 
 type Props = {
@@ -14,28 +13,12 @@ export function Button(props: Props) {
   return (
     <button
       {...restProps}
-      className={cx(
-        reset.button,
-        css({
-          display: "flex",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: mainColor,
-          cursor: "pointer",
-          ":active": {
-            transform: "scale(0.95)",
-          },
-          color: colors.white,
-          fontWeight: "bold",
-          fontSize: 16,
-          lineHeight: 1.5,
-          padding: 16,
-          border: "none",
-          borderRadius: 15,
-          userSelect: "none",
-          transition: "transform 0.1s ease",
-        }),
+      className={cn(
+        "flex w-full justify-center items-center cursor-pointer text-white font-bold text-base leading-6 p-4 border-0 rounded-[15px] select-none transition-transform duration-100 ease-in-out active:scale-95",
+        {
+          "bg-error": mainColor === colors.error,
+          "bg-success": mainColor === colors.success,
+        },
         className
       )}
     >

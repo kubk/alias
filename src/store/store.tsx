@@ -14,7 +14,7 @@ export class Store {
   secondsLeft?: number;
   screen: Screen = "start-modal";
   isWaitingLastWord = false;
-  private intervalId?: NodeJS.Timer;
+  private intervalId?: number;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -49,7 +49,10 @@ export class Store {
     this.isWaitingLastWord = false;
     this.screen = "game";
     this.secondsLeft = this.secondsPerRound;
-    this.intervalId = setInterval(this.handleTimerTick, 1000);
+    this.intervalId = setInterval(
+      this.handleTimerTick,
+      1000
+    ) as unknown as number;
   }
 
   private handleTimerTick() {

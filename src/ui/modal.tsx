@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { css } from "@emotion/css";
-import { colors, theme } from "../lib/theme";
 
 type Props = {
   children: ReactNode;
@@ -26,13 +24,7 @@ export function Modal(props: Props) {
 
   return (
     <motion.div
-      className={css({
-        maxWidth: 290,
-        margin: "0 auto",
-        padding: 24,
-        background: colors.card,
-        borderRadius: theme.borderRadius,
-      })}
+      className="max-w-[290px] mx-auto p-6 rounded-[15px] bg-card"
       initial={"hidden"}
       animate={"visible"}
       exit={"hidden"}

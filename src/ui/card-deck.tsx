@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card } from "./card";
-import { css } from "@emotion/css";
 import { colors } from "../lib/theme";
 import { store } from "../store/store";
 import { Button } from "./button";
@@ -53,21 +52,8 @@ export function CardDeck() {
   };
 
   return (
-    <div
-      className={css({
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-      })}
-    >
-      <div
-        className={css({
-          position: "relative",
-          width: "100%",
-          height: 290,
-        })}
-      >
+    <div className="flex flex-col items-center w-full">
+      <div className="relative w-full h-[290px]">
         {store.cards.map((card, index) => {
           const isInFront = index === store.cards.length - 1;
           const isBelowCard = index === store.cards.length - 2;
@@ -84,19 +70,19 @@ export function CardDeck() {
                 ? -10
                 : 10
               : 0;
-            const backgroundColor = exitDirection
+            const bgColor = exitDirection
               ? exitDirection === "left"
-                ? colors.error
-                : colors.success
-              : colors.card;
+                ? ("error" as const)
+                : ("success" as const)
+              : ("card" as const);
 
             return (
               <Card
                 word={card}
                 key={card}
+                bgColor={bgColor}
                 style={{
                   zIndex: index,
-                  backgroundColor,
                 }}
                 animate={{
                   x: targetX,
@@ -135,25 +121,18 @@ export function CardDeck() {
         })}
       </div>
 
-      <div
-        className={css({
-          display: "flex",
-          gap: 12,
-          marginTop: 48,
-          width: 310,
-        })}
-      >
+      <div className="flex gap-3 mt-12 w-[290px]">
         <Button
           onClick={handleSkip}
           mainColor={colors.error}
-          className={css({ flex: 1 })}
+          className="flex-1"
         >
           Skip
         </Button>
         <Button
           onClick={handleCorrect}
           mainColor={colors.success}
-          className={css({ flex: 1 })}
+          className="flex-1"
         >
           Correct
         </Button>

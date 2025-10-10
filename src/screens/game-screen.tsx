@@ -1,4 +1,3 @@
-import { css } from "@emotion/css";
 import { Counter } from "../ui/counter";
 import { Countdown } from "../ui/countdown";
 import { CardDeck } from "../ui/card-deck";
@@ -7,43 +6,16 @@ import { store } from "../store/store";
 
 export function GameScreen() {
   return (
-    <div
-      className={css({
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-      })}
-    >
-      <div
-        className={css({
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 32,
-        })}
-      >
+    <div className="flex flex-col h-screen">
+      <div className="flex justify-center mt-8">
         <Countdown />
       </div>
 
-      <div
-        className={css({
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 24,
-          paddingTop: 40,
-        })}
-      >
+      <div className="overflow-hidden flex justify-center mt-6 pt-10">
         <CardDeck />
       </div>
 
-      <div
-        className={css({
-          display: "flex",
-          justifyContent: "center",
-          gap: 48,
-          marginTop: 32,
-        })}
-      >
+      <div className="flex justify-center gap-12 mt-8">
         <Counter color={colors.error} value={store.skipped.length} />
         <Counter color={colors.success} value={store.guessed.length} />
       </div>
