@@ -69,6 +69,13 @@ export class Store {
     this.secondsPerRound = seconds;
   }
 
+  playAgain() {
+    this.skipped = [];
+    this.guessed = [];
+    this.cards = [getRandomWord(), getRandomWord()];
+    this.startTimer();
+  }
+
   restart() {
     this.skipped = [];
     this.guessed = [];

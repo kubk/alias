@@ -8,7 +8,7 @@ export function StartScreen() {
   return (
     <Modal>
       <div className="flex flex-col items-center">
-        <span className="text-4xl">Alias game</span>
+        <span className="text-4xl font-semibold">Alias game</span>
         <p className="text mt-8 mb-0 pb-2 self-start">Seconds per round</p>
         <div className="flex gap-3 w-full">
           {[10, 30, 60, 90].map((seconds) => (

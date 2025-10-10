@@ -11,7 +11,6 @@ export function FinishScreen() {
         </span>
 
         <div className="w-full mb-8 space-y-3">
-          {/* Success chips */}
           {store.guessed.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {store.guessed.map((word) => (
@@ -28,7 +27,6 @@ export function FinishScreen() {
             </div>
           )}
 
-          {/* Skipped chips */}
           {store.skipped.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {store.skipped.map((word) => (
@@ -46,14 +44,25 @@ export function FinishScreen() {
           )}
         </div>
 
-        <Button
-          variant="success"
-          onClick={() => {
-            store.restart();
-          }}
-        >
-          <span className="font-semibold text-lg">Play again!</span>
-        </Button>
+        <div className="flex flex-col items-center gap-3 w-full">
+          <Button
+            variant="success"
+            onClick={() => {
+              store.playAgain();
+            }}
+          >
+            <span className="font-semibold text-lg">Play again!</span>
+          </Button>
+
+          <button
+            onClick={() => {
+              store.restart();
+            }}
+            className="text-text/60 text-sm hover:text-text/80 transition-colors mt-1"
+          >
+            Quit
+          </button>
+        </div>
       </div>
     </Modal>
   );
