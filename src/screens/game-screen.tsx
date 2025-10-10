@@ -1,7 +1,6 @@
 import { Counter } from "../ui/counter";
 import { Countdown } from "../ui/countdown";
 import { CardDeck } from "../ui/card-deck";
-import { colors } from "../lib/theme";
 import { store } from "../store/store";
 
 export function GameScreen() {
@@ -16,8 +15,8 @@ export function GameScreen() {
       </div>
 
       <div className="flex justify-center gap-12 mt-8">
-        <Counter color={colors.error} value={store.skipped.length} />
-        <Counter color={colors.success} value={store.guessed.length} />
+        <Counter variant="error" value={store.skipped.length} />
+        <Counter variant="success" value={store.guessed.length} />
       </div>
     </div>
   );

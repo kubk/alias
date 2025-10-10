@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 import { AnimatePresence } from "../lib/animate-presence";
 import { cn } from "../lib/cn";
-import { colors } from "../lib/theme";
 
-export function Counter(props: { color: string; value: number }) {
+export function Counter(props: {
+  variant: "error" | "success";
+  value: number;
+}) {
   return (
     <AnimatePresence initial={false}>
       <motion.div
         key={props.value}
         className={cn("text-5xl font-semibold", {
-          "text-error": props.color === colors.error,
-          "text-success": props.color === colors.success,
+          "text-error": props.variant === "error",
+          "text-success": props.variant === "success",
         })}
         exit={{ y: 75, opacity: 0, position: "absolute" }}
         animate={{ y: 0, opacity: 1 }}

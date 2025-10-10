@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card } from "./card";
-import { colors } from "../lib/theme";
 import { store } from "../store/store";
 import { Button } from "./button";
 
@@ -122,18 +121,10 @@ export function CardDeck() {
       </div>
 
       <div className="flex gap-3 mt-12 w-[290px]">
-        <Button
-          onClick={handleSkip}
-          mainColor={colors.error}
-          className="flex-1"
-        >
+        <Button onClick={handleSkip} variant="error" className="flex-1">
           Skip
         </Button>
-        <Button
-          onClick={handleCorrect}
-          mainColor={colors.success}
-          className="flex-1"
-        >
+        <Button onClick={handleCorrect} variant="success" className="flex-1">
           Correct
         </Button>
       </div>

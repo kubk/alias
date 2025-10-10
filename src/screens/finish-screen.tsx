@@ -1,6 +1,5 @@
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
-import { colors } from "../lib/theme";
 import { store } from "../store/store";
 
 export function FinishScreen() {
@@ -30,7 +29,7 @@ export function FinishScreen() {
 
         <div className="mt-9" />
         <Button
-          mainColor={colors.success}
+          variant="success"
           onClick={() => {
             store.restart();
           }}
