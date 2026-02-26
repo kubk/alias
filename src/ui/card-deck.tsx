@@ -3,6 +3,7 @@ import { Card } from "./card";
 import { store } from "../store/store";
 import { Button } from "./button";
 import { AnimatePresence } from "../lib/animate-presence";
+import { t } from "../i18n/i18n-store";
 
 export function CardDeck() {
   const [index, setIndex] = useState(0);
@@ -60,10 +61,10 @@ export function CardDeck() {
 
       <div className="flex gap-3 mt-12 w-[290px]">
         <Button onClick={handleSkip} variant="error" className="flex-1">
-          Skip
+          {t("skip")}
         </Button>
         <Button onClick={handleCorrect} variant="success" className="flex-1">
-          Correct
+          {t("correct")}
         </Button>
       </div>
     </div>

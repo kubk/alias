@@ -4,7 +4,7 @@ import { assert } from "ts-essentials";
 import { getRandomWord } from "../lib/get-random-word";
 import { makePersistable } from "mobx-persist-store";
 
-type Screen = "start-modal" | "game" | "finish";
+type Screen = "start-modal" | "game" | "finish" | "settings";
 
 export class Store {
   cards = [getRandomWord(), getRandomWord()];
@@ -81,6 +81,14 @@ export class Store {
 
   restart() {
     this.resetGame();
+    this.screen = "start-modal";
+  }
+
+  openSettings() {
+    this.screen = "settings";
+  }
+
+  closeSettings() {
     this.screen = "start-modal";
   }
 

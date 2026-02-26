@@ -1,13 +1,14 @@
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { store } from "../store/store";
+import { t } from "../i18n/i18n-store";
 
 export function FinishScreen() {
   return (
     <Modal marginTop={"32px"}>
       <div className="flex flex-col items-center z-[11] w-full">
         <span className="text-5xl font-bold mb-8">
-          Score: {store.guessed.length}
+          {t("score")} {store.guessed.length}
         </span>
 
         <div className="w-full mb-8 space-y-3">
@@ -51,7 +52,7 @@ export function FinishScreen() {
               store.playAgain();
             }}
           >
-            <span className="font-semibold text-lg">Play again!</span>
+            <span className="font-semibold text-lg">{t("playAgain")}</span>
           </Button>
 
           <button
@@ -60,7 +61,7 @@ export function FinishScreen() {
             }}
             className="text-text/60 text-sm hover:text-text/80 transition-colors mt-1"
           >
-            Quit
+            {t("quit")}
           </button>
         </div>
       </div>
