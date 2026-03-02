@@ -5,7 +5,7 @@ import { t } from "../i18n/i18n-store";
 
 export function FinishScreen() {
   return (
-    <Modal marginTop={"32px"}>
+    <Modal>
       <div className="flex flex-col items-center z-[11] w-full">
         <span className="text-5xl font-bold mb-8">
           {t("score")} {appStore.guessed.length}

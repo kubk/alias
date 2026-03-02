@@ -5,12 +5,12 @@ import { appStore } from "../store/app-store";
 
 export function GameScreen() {
   return (
-    <div className="flex flex-col h-screen">
-      <div className="flex justify-center mt-8">
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex justify-center mb-8">
         <Countdown />
       </div>
 
-      <div className="overflow-hidden flex justify-center pt-10">
+      <div className="overflow-hidden flex justify-center">
         <CardDeck />
       </div>
 
