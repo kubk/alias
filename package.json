@@ -14,7 +14,7 @@
     "@tailwindcss/vite": "^4.1.14",
     "clsx": "^2.1.1",
     "colord": "^2.9.2",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^12.34.4",
     "lucide-react": "^0.575.0",
     "mobx": "^6.6.1",
     "mobx-log": "^2.0.1",

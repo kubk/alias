@@ -42,8 +42,8 @@ export function SettingsScreen() {
                         ? "var(--color-white)"
                         : "var(--color-text)",
                   }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.15 }}
                 >
                   {languageNames[lang]}

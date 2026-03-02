@@ -1,28 +1,12 @@
 import { Settings } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { StartScreen } from "./screens/start-screen";
 import { GameScreen } from "./screens/game-screen";
 import { FinishScreen } from "./screens/finish-screen";
 import { SettingsScreen } from "./screens/settings-screen";
-import { AnimatePresence } from "./lib/animate-presence";
 import { appStore } from "./store/app-store";
-import { ReactNode } from "react";
 
 const transition = { ease: "easeInOut", duration: 0.2 };
-
-function AnimatedScreen({ children }: { children: ReactNode }) {
-  return (
-    <motion.div
-      className="absolute inset-0"
-      initial={{ scale: 0.97, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.97, opacity: 0 }}
-      transition={transition}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 export function Page() {
   return (
@@ -41,27 +25,20 @@ export function Page() {
         </motion.button>
       )}
 
-      <AnimatePresence>
-        {appStore.screen === "start-modal" && (
-          <AnimatedScreen key="start">
-            <StartScreen />
-          </AnimatedScreen>
-        )}
-        {appStore.screen === "settings" && (
-          <AnimatedScreen key="settings">
-            <SettingsScreen />
-          </AnimatedScreen>
-        )}
-        {appStore.screen === "finish" && (
-          <AnimatedScreen key="finish">
-            <FinishScreen />
-          </AnimatedScreen>
-        )}
-        {appStore.screen === "game" && (
-          <AnimatedScreen key="game">
-            <GameScreen />
-          </AnimatedScreen>
-        )}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={appStore.screen}
+          className="absolute inset-0"
+          initial={{ scale: 0.97, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.97, opacity: 0 }}
+          transition={transition}
+        >
+          {appStore.screen === "start-modal" && <StartScreen />}
+          {appStore.screen === "settings" && <SettingsScreen />}
+          {appStore.screen === "finish" && <FinishScreen />}
+          {appStore.screen === "game" && <GameScreen />}
+        </motion.div>
       </AnimatePresence>
     </>
   );
