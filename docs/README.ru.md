@@ -1,10 +1,10 @@
-# Alias Game
+<h1 align="center">Alias Game</h1>
+
+<img width="1132" alt="Скриншот игры Alias" src="../assets/alias.png">
 
 <p align="center">
   Readme: <a href="../README.md">English</a>, <a href="./README.ru.md">Русский</a>
 </p>
-
-<img width="1132" alt="Скриншот игры Alias" src="../assets/alias.png">
 
 Веб-версия популярной игры «Алиас», оптимизированная для мобильных и десктопов. Добавьте на домашний экран для нативного опыта.
 

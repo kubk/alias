@@ -1,10 +1,10 @@
-# Alias Game
+<h1 align="center">Alias Game</h1>
+
+<img width="1132" alt="Alias game screenshot" src="./assets/alias.png">
 
 <p align="center">
   Readme: <a href="./README.md">English</a>, <a href="./docs/README.ru.md">Русский</a>
 </p>
-
-<img width="1132" alt="Alias game screenshot" src="./assets/alias.png">
 
 A web-based implementation of the popular word-guessing game "Alias", optimized for both mobile and desktop. Add it to your home screen for a native-like app experience.
 
