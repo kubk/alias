@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card } from "./card";
-import { store } from "../store/store";
+import { appStore } from "../store/app-store";
 import { Button } from "./button";
 import { AnimatePresence } from "../lib/animate-presence";
 import { t } from "../i18n/i18n-store";
@@ -11,13 +11,13 @@ export function CardDeck() {
   const [isExiting, setIsExiting] = useState(false);
 
   const handleSkip = () => {
-    const currentCard = store.cards[store.cards.length - 1];
+    const currentCard = appStore.cards[appStore.cards.length - 1];
     if (currentCard && !isExiting) {
       setIsExiting(true);
       setExitX(-250);
 
       setTimeout(() => {
-        store.addToSkipped(currentCard);
+        appStore.addToSkipped(currentCard);
         setIndex(index + 1);
         setIsExiting(false);
         setExitX(0);
@@ -26,7 +26,7 @@ export function CardDeck() {
   };
 
   const handleCorrect = () => {
-    const currentCard = store.cards[store.cards.length - 1];
+    const currentCard = appStore.cards[appStore.cards.length - 1];
     if (currentCard && !isExiting) {
       setIsExiting(true);
       setExitX(250);
@@ -35,13 +35,13 @@ export function CardDeck() {
         setIndex(index + 1);
         setIsExiting(false);
         setExitX(0);
-        store.addToCorrect(currentCard);
+        appStore.addToCorrect(currentCard);
       }, 100);
     }
   };
 
-  const currentCard = store.cards[store.cards.length - 1];
-  const nextCard = store.cards[store.cards.length - 2];
+  const currentCard = appStore.cards[appStore.cards.length - 1];
+  const nextCard = appStore.cards[appStore.cards.length - 2];
 
   return (
     <div className="flex flex-col items-center w-full">

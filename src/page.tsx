@@ -5,14 +5,14 @@ import { GameScreen } from "./screens/game-screen";
 import { FinishScreen } from "./screens/finish-screen";
 import { SettingsScreen } from "./screens/settings-screen";
 import { AnimatePresence } from "./lib/animate-presence";
-import { store } from "./store/store";
+import { appStore } from "./store/app-store";
 
 export function Page() {
   return (
     <>
-      {store.screen === "start-modal" && (
+      {appStore.screen === "start-modal" && (
         <motion.button
-          onClick={() => store.openSettings()}
+          onClick={() => appStore.openSettings()}
           className="fixed top-4 right-4 p-2 rounded-lg text-text/50 hover:text-text/80 transition-colors z-50"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -25,10 +25,10 @@ export function Page() {
       )}
 
       <AnimatePresence>
-        {store.screen === "start-modal" && <StartScreen />}
-        {store.screen === "settings" && <SettingsScreen />}
-        {store.screen === "finish" && <FinishScreen />}
-        {store.screen === "game" && <GameScreen />}
+        {appStore.screen === "start-modal" && <StartScreen />}
+        {appStore.screen === "settings" && <SettingsScreen />}
+        {appStore.screen === "finish" && <FinishScreen />}
+        {appStore.screen === "game" && <GameScreen />}
       </AnimatePresence>
     </>
   );

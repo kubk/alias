@@ -1,7 +1,7 @@
 import { Counter } from "../ui/counter";
 import { Countdown } from "../ui/countdown";
 import { CardDeck } from "../ui/card-deck";
-import { store } from "../store/store";
+import { appStore } from "../store/app-store";
 
 export function GameScreen() {
   return (
@@ -15,8 +15,8 @@ export function GameScreen() {
       </div>
 
       <div className="flex justify-center gap-12 mt-8">
-        <Counter variant="error" value={store.skipped.length} />
-        <Counter variant="success" value={store.guessed.length} />
+        <Counter variant="error" value={appStore.skipped.length} />
+        <Counter variant="success" value={appStore.guessed.length} />
       </div>
     </div>
   );

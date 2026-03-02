@@ -1,11 +1,9 @@
-export const languages = ["en", "ru", "tr", "es"] as const;
+export const languages = ["en", "ru"] as const;
 export type Language = typeof languages[number];
 
 export const languageNames: Record<Language, string> = {
   en: "English",
   ru: "Русский",
-  tr: "Türkçe",
-  es: "Español",
 };
 
 const translations = {
@@ -19,7 +17,7 @@ const translations = {
     playAgain: "Play again!",
     quit: "Quit",
     settings: "Settings",
-    language: "App Language",
+    language: "Language",
     back: "Back",
   },
   ru: {
@@ -32,34 +30,8 @@ const translations = {
     playAgain: "Ещё раз!",
     quit: "Выход",
     settings: "Настройки",
-    language: "Язык приложения",
+    language: "Язык",
     back: "Назад",
-  },
-  tr: {
-    appTitle: "Alias",
-    secondsPerRound: "Tur süresi",
-    start: "Başla!",
-    skip: "Geç",
-    correct: "Doğru",
-    score: "Puan:",
-    playAgain: "Tekrar oyna!",
-    quit: "Çık",
-    settings: "Ayarlar",
-    language: "Uygulama Dili",
-    back: "Geri",
-  },
-  es: {
-    appTitle: "Alias",
-    secondsPerRound: "Segundos por ronda",
-    start: "¡Empezar!",
-    skip: "Saltar",
-    correct: "Correcto",
-    score: "Puntos:",
-    playAgain: "¡Otra vez!",
-    quit: "Salir",
-    settings: "Ajustes",
-    language: "Idioma de la app",
-    back: "Volver",
   },
 } as const;
 

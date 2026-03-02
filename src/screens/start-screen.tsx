@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { motion } from "framer-motion";
-import { store } from "../store/store";
+import { appStore } from "../store/app-store";
 import { t } from "../i18n/i18n-store";
 
 export function StartScreen() {
@@ -14,15 +14,15 @@ export function StartScreen() {
           {[10, 30, 60, 90].map((seconds) => (
             <motion.button
               key={seconds}
-              onClick={() => store.changeSecondsPerRound(seconds)}
+              onClick={() => appStore.changeSecondsPerRound(seconds)}
               className="flex-1 h-12 rounded-lg font-bold text-lg relative bg-card"
               animate={{
                 backgroundColor:
-                  store.secondsPerRound === seconds
+                  appStore.secondsPerRound === seconds
                     ? "var(--color-success)"
                     : "var(--color-card)",
                 color:
-                  store.secondsPerRound === seconds
+                  appStore.secondsPerRound === seconds
                     ? "var(--color-white)"
                     : "var(--color-text)",
               }}
@@ -37,7 +37,7 @@ export function StartScreen() {
         <Button
           variant="success"
           onClick={() => {
-            store.startTimer();
+            appStore.startTimer();
           }}
         >
           <motion.div

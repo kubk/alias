@@ -1,13 +1,15 @@
 import { makeAutoObservable } from "mobx";
 import { makeLoggable } from "mobx-log";
 import { assert } from "ts-essentials";
-import { getRandomWord } from "../lib/get-random-word";
+import { getRandomWord, resetUsedWords } from "../lib/get-random-word";
 import { makePersistable } from "mobx-persist-store";
+import { i18nStore } from "../i18n/i18n-store";
+import type { Language } from "../i18n/translations";
 
 type Screen = "start-modal" | "game" | "finish" | "settings";
 
 export class Store {
-  cards = [getRandomWord(), getRandomWord()];
+  cards: string[] = [];
   skipped: string[] = [];
   guessed: string[] = [];
   secondsPerRound = 60;
@@ -17,6 +19,10 @@ export class Store {
   private intervalId?: NodeJS.Timeout;
 
   constructor() {
+    this.cards = [
+      getRandomWord(i18nStore.language),
+      getRandomWord(i18nStore.language),
+    ];
     makeAutoObservable(this, {}, { autoBind: true });
     makeLoggable(this);
     makePersistable(this, {
@@ -28,7 +34,7 @@ export class Store {
 
   private addRandomCard() {
     this.cards.pop();
-    this.cards.unshift(getRandomWord());
+    this.cards.unshift(getRandomWord(i18nStore.language));
   }
 
   addToSkipped(word: string) {
@@ -71,7 +77,10 @@ export class Store {
   private resetGame() {
     this.skipped = [];
     this.guessed = [];
-    this.cards = [getRandomWord(), getRandomWord()];
+    this.cards = [
+      getRandomWord(i18nStore.language),
+      getRandomWord(i18nStore.language),
+    ];
   }
 
   playAgain() {
@@ -88,6 +97,13 @@ export class Store {
     this.screen = "settings";
   }
 
+  changeLanguage(lang: Language) {
+    if (lang === i18nStore.language) return;
+    i18nStore.setLanguage(lang);
+    resetUsedWords();
+    this.resetGame();
+  }
+
   closeSettings() {
     this.screen = "start-modal";
   }
@@ -100,4 +116,4 @@ export class Store {
   }
 }
 
-export const store = new Store();
+export const appStore = new Store();

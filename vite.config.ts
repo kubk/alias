@@ -14,4 +14,7 @@ export default defineConfig({
     })
   ],
   base: '/alias/',
+  server: {
+    port: 35396,
+  },
 });

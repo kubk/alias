@@ -1,16 +1,31 @@
-import words from "./top-2000-english-words.json";
+import englishWords from "./top-2000-english-words.json";
+import russianWords from "./top-2000-russian-words.json";
+import type { Language } from "../i18n/translations";
 
-const usedWords: string[] = [];
+const wordLists: Record<Language, string[]> = {
+  en: englishWords,
+  ru: russianWords,
+};
 
-export const getRandomWord = (): string => {
-  const word = words[Math.floor(Math.random() * words.length)];
+const usedWords = new Set<string>();
 
-  // If a word was used during the session - try another word
-  if (usedWords.includes(word)) {
-    return getRandomWord();
+export function resetUsedWords() {
+  usedWords.clear();
+}
+
+export function getRandomWord(language: Language): string {
+  const words = wordLists[language];
+
+  // Reset when pool is exhausted
+  if (usedWords.size >= words.length) {
+    usedWords.clear();
   }
 
-  usedWords.push(word);
+  let word: string;
+  do {
+    word = words[Math.floor(Math.random() * words.length)];
+  } while (usedWords.has(word));
 
+  usedWords.add(word);
   return word;
-};
+}
