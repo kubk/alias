@@ -17,7 +17,7 @@ const translations = {
     playAgain: "Play again!",
     quit: "Quit",
     settings: "Settings",
-    language: "Language",
+    language: "Language & words",
     back: "Back",
   },
   ru: {
@@ -30,7 +30,7 @@ const translations = {
     playAgain: "Ещё раз!",
     quit: "Выход",
     settings: "Настройки",
-    language: "Язык",
+    language: "Язык и слова",
     back: "Назад",
   },
 } as const;

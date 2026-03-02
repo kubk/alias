@@ -1,5 +1,9 @@
 # Alias Game
 
+<p align="center">
+  Readme: <a href="./README.md">English</a>, <a href="./docs/README.ru.md">Русский</a>
+</p>
+
 <img width="1132" alt="Alias game screenshot" src="./assets/alias.png">
 
 A web-based implementation of the popular word-guessing game "Alias", optimized for both mobile and desktop. Add it to your home screen for a native-like app experience.
@@ -12,7 +16,7 @@ Alias is a team game that helps develop language skills. The goal is for you to 
 
 ## Features
 
-- **2000 most common English words**: A curated list of popular words
+- **Multi-language support**: Play in English or Russian, each with its own curated word list
 - **Mobile-first design**: Fully responsive and works great on any screen size
 - **PWA support**: Can be "installed" on a mobile device and used like a native app
 - **Smooth animations**: Interactive elements are animated using Framer Motion for a fluid user experience
