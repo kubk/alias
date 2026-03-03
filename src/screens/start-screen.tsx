@@ -10,26 +10,32 @@ export function StartScreen() {
       <div className="flex flex-col items-center">
         <span className="text-4xl font-semibold pt-2">{t("appTitle")}</span>
         <p className="text mt-8 mb-0 pb-2">{t("secondsPerRound")}</p>
-        <div className="flex gap-3 w-full">
+        <div className="flex gap-3 w-full relative">
+          <div
+            className="absolute top-0 h-full rounded-lg bg-success transition-[left] duration-300 ease-out"
+            style={{
+              width: "calc((100% - 2.25rem) / 4)",
+              left: `calc(${[10, 30, 60, 90].indexOf(appStore.secondsPerRound)} * (100% + 0.75rem) / 4)`,
+            }}
+          />
           {[10, 30, 60, 90].map((seconds) => (
-            <motion.button
+            <button
               key={seconds}
               onClick={() => appStore.changeSecondsPerRound(seconds)}
-              className="flex-1 h-12 rounded-lg font-bold text-lg relative bg-card"
-              animate={{
-                backgroundColor:
-                  appStore.secondsPerRound === seconds
-                    ? "var(--color-success)"
-                    : "var(--color-card)",
-                color:
-                  appStore.secondsPerRound === seconds
-                    ? "var(--color-white)"
-                    : "var(--color-text)",
-              }}
-              transition={{ duration: 0.2 }}
+              className="flex-1 h-12 rounded-lg font-bold text-lg relative z-10"
             >
-              {seconds}
-            </motion.button>
+              <motion.span
+                animate={{
+                  color:
+                    appStore.secondsPerRound === seconds
+                      ? "var(--color-white)"
+                      : "var(--color-text)",
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                {seconds}
+              </motion.span>
+            </button>
           ))}
         </div>
 
