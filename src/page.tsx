@@ -14,7 +14,7 @@ export function Page() {
       {appStore.screen === "start-modal" && (
         <motion.button
           onClick={() => appStore.openSettings()}
-          className="fixed top-4 right-4 p-2 rounded-lg text-text/50 hover:text-text/80 transition-colors z-50"
+          className="fixed right-4 p-2 rounded-lg text-text/50 hover:text-text/80 transition-colors z-50 top-[calc(env(safe-area-inset-top)+1rem)]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.1, rotate: 45 }}
