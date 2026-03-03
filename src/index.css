@@ -30,7 +30,9 @@ body {
 
 body {
   margin: 0;
-  height: 100dvh;
+  min-height: 100dvh;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   background-image: radial-gradient(
     circle at 85.54% 7.65%,
     #fdecc7 0,
