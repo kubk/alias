@@ -52,6 +52,7 @@ export function SettingsScreen() {
             </div>
           </div>
         </div>
+        <p className="mt-6 text-xs text-text/20 select-all">{__COMMIT_HASH__}</p>
       </div>
     </Modal>
   );
