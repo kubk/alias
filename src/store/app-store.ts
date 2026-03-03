@@ -5,6 +5,7 @@ import { getRandomWord, resetUsedWords } from "../lib/get-random-word";
 import { makePersistable } from "mobx-persist-store";
 import { i18nStore } from "./i18n-store";
 import type { Language } from "../i18n/translations";
+import { haptic } from "../lib/haptics";
 
 type Screen = "start-modal" | "game" | "finish" | "settings";
 
@@ -38,6 +39,7 @@ export class Store {
   }
 
   addToSkipped(word: string) {
+    haptic("light");
     this.skipped.push(word);
     if (this.isWaitingLastWord) {
       this.screen = "finish";
@@ -46,6 +48,7 @@ export class Store {
   }
 
   addToCorrect(word: string) {
+    haptic("success");
     this.guessed.push(word);
     if (this.isWaitingLastWord) {
       this.screen = "finish";
@@ -54,6 +57,7 @@ export class Store {
   }
 
   startTimer() {
+    haptic("light");
     this.isWaitingLastWord = false;
     this.screen = "game";
     this.secondsLeft = this.secondsPerRound;
@@ -67,10 +71,12 @@ export class Store {
       assert(this.intervalId);
       clearInterval(this.intervalId);
       this.isWaitingLastWord = true;
+      haptic("heavy");
     }
   }
 
   changeSecondsPerRound(seconds: number) {
+    haptic("selection");
     this.secondsPerRound = seconds;
   }
 
@@ -84,27 +90,32 @@ export class Store {
   }
 
   playAgain() {
+    haptic("light");
     this.resetGame();
     this.startTimer();
   }
 
   restart() {
+    haptic("light");
     this.resetGame();
     this.screen = "start-modal";
   }
 
   openSettings() {
+    haptic("light");
     this.screen = "settings";
   }
 
   changeLanguage(lang: Language) {
     if (lang === i18nStore.language) return;
+    haptic("selection");
     i18nStore.setLanguage(lang);
     resetUsedWords();
     this.resetGame();
   }
 
   closeSettings() {
+    haptic("light");
     this.screen = "start-modal";
   }
 
