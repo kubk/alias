@@ -25,11 +25,12 @@
 html,
 body {
   overscroll-behavior: none;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   background-image: radial-gradient(
     circle at 85.54% 7.65%,
     #fdecc7 0,

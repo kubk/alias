@@ -5,7 +5,7 @@ import { appStore } from "../store/app-store";
 
 export function GameScreen() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-dvh">
       <div className="flex justify-center mb-8">
         <Countdown />
       </div>
