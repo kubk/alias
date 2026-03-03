@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card } from "./card";
 import { appStore } from "../store/app-store";
 import { Button } from "./button";
-import { AnimatePresence } from "../lib/animate-presence";
+import { AnimatePresence } from "framer-motion";
 import { t } from "../store/i18n-store";
 
 export function CardDeck() {

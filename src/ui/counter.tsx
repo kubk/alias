@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { AnimatePresence } from "../lib/animate-presence";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "../lib/cn";
 
 export function Counter(props: {
