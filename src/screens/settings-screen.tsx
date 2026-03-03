@@ -7,7 +7,7 @@ import { languages, languageNames } from "../i18n/translations";
 
 export function SettingsScreen() {
   return (
-    <Modal footer={<p className="mt-2 text-xs text-text/20">{__COMMIT_HASH__}</p>}>
+    <Modal footer={<p className="mt-2 text-xs text-yellow-800/50">{t("appVersion")}: {__COMMIT_HASH__}</p>}>
       <div className="flex flex-col items-center">
         <div className="w-full flex items-center mb-6">
           <motion.button
