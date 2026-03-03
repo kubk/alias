@@ -25,7 +25,7 @@ export function SettingsScreen() {
 
         <div className="w-full space-y-6">
           <div>
-            <p className="text-sm text-text/70 mb-3">{t("language")}</p>
+            <p className="text-base text-text/70 mb-3">{t("language")}</p>
             <div className="grid grid-cols-2 gap-2">
               {languages.map((lang) => (
                 <motion.button

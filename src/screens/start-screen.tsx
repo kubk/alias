@@ -9,7 +9,7 @@ export function StartScreen() {
     <Modal>
       <div className="flex flex-col items-center">
         <span className="text-4xl font-semibold pt-2">{t("appTitle")}</span>
-        <p className="text mt-8 mb-0 pb-2">{t("secondsPerRound")}</p>
+        <p className="text text-text/70 mt-8 mb-0 pb-2">{t("secondsPerRound")}</p>
         <div className="flex gap-3 w-full relative">
           <div
             className="absolute top-0 h-full rounded-lg bg-success transition-[left] duration-300 ease-out"
