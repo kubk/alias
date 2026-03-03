@@ -3,7 +3,7 @@ import { makeLoggable } from "mobx-log";
 import { assert } from "ts-essentials";
 import { getRandomWord, resetUsedWords } from "../lib/get-random-word";
 import { makePersistable } from "mobx-persist-store";
-import { i18nStore } from "../i18n/i18n-store";
+import { i18nStore } from "./i18n-store";
 import type { Language } from "../i18n/translations";
 
 type Screen = "start-modal" | "game" | "finish" | "settings";

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Modal } from "../ui/modal";
 import { appStore } from "../store/app-store";
-import { i18nStore, t } from "../i18n/i18n-store";
+import { i18nStore, t } from "../store/i18n-store";
 import { languages, languageNames } from "../i18n/translations";
 
 export function SettingsScreen() {

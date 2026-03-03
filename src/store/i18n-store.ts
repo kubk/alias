@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import { Language, getTranslations, TranslationKey } from "./translations";
+import { Language, getTranslations, TranslationKey } from "../i18n/translations";
 
 class I18nStore {
   language: Language = "en";

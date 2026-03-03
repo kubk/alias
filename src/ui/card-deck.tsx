@@ -3,7 +3,7 @@ import { Card } from "./card";
 import { appStore } from "../store/app-store";
 import { Button } from "./button";
 import { AnimatePresence } from "../lib/animate-presence";
-import { t } from "../i18n/i18n-store";
+import { t } from "../store/i18n-store";
 
 export function CardDeck() {
   const [index, setIndex] = useState(0);

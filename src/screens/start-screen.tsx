@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { motion } from "framer-motion";
 import { appStore } from "../store/app-store";
-import { t } from "../i18n/i18n-store";
+import { t } from "../store/i18n-store";
 
 export function StartScreen() {
   return (
