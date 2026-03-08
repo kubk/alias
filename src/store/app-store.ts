@@ -9,7 +9,7 @@ import { haptic } from "../lib/haptics";
 
 type Screen = "start-modal" | "game" | "finish" | "settings";
 
-export class Store {
+class AppStore {
   cards: string[] = [];
   skipped: string[] = [];
   guessed: string[] = [];
@@ -127,4 +127,4 @@ export class Store {
   }
 }
 
-export const appStore = new Store();
+export const appStore = new AppStore();

@@ -8,18 +8,17 @@
     "build": "tsc && vite build",
     "typecheck": "tsc --noEmit",
     "prettier:fix": "npx prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "knip": "knip"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
     "clsx": "^2.1.1",
-    "colord": "^2.9.2",
     "framer-motion": "^12.34.4",
     "lucide-react": "^0.575.0",
     "mobx": "^6.6.1",
     "mobx-log": "^2.0.1",
     "mobx-persist-store": "^1.0.6",
-    "mobx-react-lite": "^3.4.0",
     "mobx-react-observer": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -35,8 +34,9 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-textfit": "^1.1.4",
     "@vitejs/plugin-react": "^5.0.4",
+    "knip": "^5.86.0",
     "prettier": "2.6",
-    "typescript": "^4.6.4",
+    "typescript": "^5.9.3",
     "vite": "^7.1.9"
   },
   "overrides": {
