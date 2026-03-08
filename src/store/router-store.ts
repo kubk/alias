@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { makeLoggable } from "mobx-log";
 import { haptic } from "../lib/haptics";
 
-export type Screen = "start-modal" | "game" | "finish" | "settings";
+type Screen = "start-modal" | "game" | "finish" | "settings";
 
 class RouterStore {
   screen: Screen = "start-modal";
