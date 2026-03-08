@@ -44,7 +44,7 @@ export function CardDeck() {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="relative w-full h-[320px] overflow-hidden">
+      <div className="relative w-full h-[320px]">
         <AnimatePresence initial={false}>
           {nextCard && <Card key={nextCard} word={nextCard} isFront={false} />}
           {currentCard && (
