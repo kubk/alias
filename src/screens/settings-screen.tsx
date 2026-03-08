@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Modal } from "../ui/modal";
-import { appStore } from "../store/app-store";
+import { routerStore } from "../store/router-store";
+import { gameStore } from "../store/game-store";
 import { i18nStore, t } from "../store/i18n-store";
 import { languages, languageNames } from "../i18n/translations";
 
@@ -11,7 +12,7 @@ export function SettingsScreen() {
       <div className="flex flex-col items-center">
         <div className="w-full flex items-center mb-6">
           <motion.button
-            onClick={() => appStore.closeSettings()}
+            onClick={() => routerStore.closeSettings()}
             className="p-2 -ml-2 rounded-lg text-text/60 hover:text-text hover:bg-text/5 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -30,7 +31,7 @@ export function SettingsScreen() {
               {languages.map((lang) => (
                 <motion.button
                   key={lang}
-                  onClick={() => appStore.changeLanguage(lang)}
+                  onClick={() => gameStore.changeLanguage(lang)}
                   className="h-12 rounded-lg font-medium text-base"
                   animate={{
                     backgroundColor:

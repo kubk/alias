@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { appStore } from "../store/app-store";
+import { gameStore } from "../store/game-store";
 import { cn } from "../lib/cn";
 
 export function Countdown() {
@@ -8,11 +8,11 @@ export function Countdown() {
       <div
         className={cn(
           "text-5xl",
-          appStore.isWarning ? "text-error" : "text-text"
+          gameStore.isWarning ? "text-error" : "text-text"
         )}
       >
         <motion.div
-          key={appStore.secondsLeft}
+          key={gameStore.secondsLeft}
           exit={{
             opacity: 0,
             position: "absolute",
@@ -21,7 +21,7 @@ export function Countdown() {
           animate={{ opacity: 1, scale: 1.1 }}
           initial={{ opacity: 0, scale: 1 }}
         >
-          {appStore.secondsLeft}
+          {gameStore.secondsLeft}
         </motion.div>
       </div>
     </AnimatePresence>

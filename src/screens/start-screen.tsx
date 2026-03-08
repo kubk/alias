@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { motion } from "framer-motion";
-import { appStore } from "../store/app-store";
+import { gameStore } from "../store/game-store";
 import { t } from "../store/i18n-store";
 
 export function StartScreen() {
@@ -15,19 +15,19 @@ export function StartScreen() {
             className="absolute top-0 h-full rounded-lg bg-success transition-[left] duration-300 ease-out"
             style={{
               width: "calc((100% - 2.25rem) / 4)",
-              left: `calc(${[10, 30, 60, 90].indexOf(appStore.secondsPerRound)} * (100% + 0.75rem) / 4)`,
+              left: `calc(${[10, 30, 60, 90].indexOf(gameStore.secondsPerRound)} * (100% + 0.75rem) / 4)`,
             }}
           />
           {[10, 30, 60, 90].map((seconds) => (
             <button
               key={seconds}
-              onClick={() => appStore.changeSecondsPerRound(seconds)}
+              onClick={() => gameStore.changeSecondsPerRound(seconds)}
               className="flex-1 h-12 rounded-lg font-bold text-lg relative z-10"
             >
               <motion.span
                 animate={{
                   color:
-                    appStore.secondsPerRound === seconds
+                    gameStore.secondsPerRound === seconds
                       ? "var(--color-white)"
                       : "var(--color-text)",
                 }}
@@ -43,7 +43,7 @@ export function StartScreen() {
         <Button
           variant="success"
           onClick={() => {
-            appStore.startTimer();
+            gameStore.startTimer();
           }}
         >
           <motion.div

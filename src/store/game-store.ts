@@ -6,24 +6,19 @@ import { makePersistable } from "mobx-persist-store";
 import { i18nStore } from "./i18n-store";
 import type { Language } from "../i18n/translations";
 import { haptic } from "../lib/haptics";
+import { routerStore } from "./router-store";
 
-type Screen = "start-modal" | "game" | "finish" | "settings";
-
-class AppStore {
+class GameStore {
   cards: string[] = [];
   skipped: string[] = [];
   guessed: string[] = [];
   secondsPerRound = 60;
   secondsLeft?: number;
-  screen: Screen = "start-modal";
   isWaitingLastWord = false;
   private intervalId?: NodeJS.Timeout;
 
   constructor() {
-    this.cards = [
-      getRandomWord(i18nStore.language),
-      getRandomWord(i18nStore.language),
-    ];
+    this.resetGame();
     makeAutoObservable(this, {}, { autoBind: true });
     makeLoggable(this);
     makePersistable(this, {
@@ -42,7 +37,7 @@ class AppStore {
     haptic("light");
     this.skipped.push(word);
     if (this.isWaitingLastWord) {
-      this.screen = "finish";
+      routerStore.navigate("finish");
     }
     this.addRandomCard();
   }
@@ -51,7 +46,7 @@ class AppStore {
     haptic("success");
     this.guessed.push(word);
     if (this.isWaitingLastWord) {
-      this.screen = "finish";
+      routerStore.navigate("finish");
     }
     this.addRandomCard();
   }
@@ -59,7 +54,7 @@ class AppStore {
   startTimer() {
     haptic("light");
     this.isWaitingLastWord = false;
-    this.screen = "game";
+    routerStore.navigate("game");
     this.secondsLeft = this.secondsPerRound;
     this.intervalId = setInterval(this.handleTimerTick, 1000);
   }
@@ -98,12 +93,7 @@ class AppStore {
   restart() {
     haptic("light");
     this.resetGame();
-    this.screen = "start-modal";
-  }
-
-  openSettings() {
-    haptic("light");
-    this.screen = "settings";
+    routerStore.navigate("start-modal");
   }
 
   changeLanguage(lang: Language) {
@@ -114,9 +104,12 @@ class AppStore {
     this.resetGame();
   }
 
-  closeSettings() {
-    haptic("light");
-    this.screen = "start-modal";
+  get currentCard() {
+    return this.cards[this.cards.length - 1];
+  }
+
+  get nextCard() {
+    return this.cards[this.cards.length - 2];
   }
 
   get isWarning() {
@@ -127,4 +120,4 @@ class AppStore {
   }
 }
 
-export const appStore = new AppStore();
+export const gameStore = new GameStore();

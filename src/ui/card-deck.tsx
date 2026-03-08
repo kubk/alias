@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card } from "./card";
-import { appStore } from "../store/app-store";
+import { gameStore } from "../store/game-store";
 import { Button } from "./button";
 import { AnimatePresence } from "framer-motion";
 import { t } from "../store/i18n-store";
@@ -11,13 +11,13 @@ export function CardDeck() {
   const [isExiting, setIsExiting] = useState(false);
 
   const handleSkip = () => {
-    const currentCard = appStore.cards[appStore.cards.length - 1];
+    const { currentCard } = gameStore;
     if (currentCard && !isExiting) {
       setIsExiting(true);
       setExitX(-250);
 
       setTimeout(() => {
-        appStore.addToSkipped(currentCard);
+        gameStore.addToSkipped(currentCard);
         setIndex(index + 1);
         setIsExiting(false);
         setExitX(0);
@@ -26,7 +26,7 @@ export function CardDeck() {
   };
 
   const handleCorrect = () => {
-    const currentCard = appStore.cards[appStore.cards.length - 1];
+    const { currentCard } = gameStore;
     if (currentCard && !isExiting) {
       setIsExiting(true);
       setExitX(250);
@@ -35,13 +35,12 @@ export function CardDeck() {
         setIndex(index + 1);
         setIsExiting(false);
         setExitX(0);
-        appStore.addToCorrect(currentCard);
+        gameStore.addToCorrect(currentCard);
       }, 100);
     }
   };
 
-  const currentCard = appStore.cards[appStore.cards.length - 1];
-  const nextCard = appStore.cards[appStore.cards.length - 2];
+  const { currentCard, nextCard } = gameStore;
 
   return (
     <div className="flex flex-col items-center w-full">

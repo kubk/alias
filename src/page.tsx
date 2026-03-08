@@ -4,16 +4,16 @@ import { StartScreen } from "./screens/start-screen";
 import { GameScreen } from "./screens/game-screen";
 import { FinishScreen } from "./screens/finish-screen";
 import { SettingsScreen } from "./screens/settings-screen";
-import { appStore } from "./store/app-store";
+import { routerStore } from "./store/router-store";
 
 const transition = { ease: "easeInOut", duration: 0.2 };
 
 export function Page() {
   return (
     <>
-      {appStore.screen === "start-modal" && (
+      {routerStore.screen === "start-modal" && (
         <motion.button
-          onClick={() => appStore.openSettings()}
+          onClick={() => routerStore.openSettings()}
           className="fixed right-4 p-2 rounded-lg text-text/50 hover:text-text/80 transition-colors z-50 top-[calc(env(safe-area-inset-top)+1rem)]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -27,17 +27,17 @@ export function Page() {
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={appStore.screen}
+          key={routerStore.screen}
           className="absolute inset-0"
           initial={{ scale: 0.97, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.97, opacity: 0 }}
           transition={transition}
         >
-          {appStore.screen === "start-modal" && <StartScreen />}
-          {appStore.screen === "settings" && <SettingsScreen />}
-          {appStore.screen === "finish" && <FinishScreen />}
-          {appStore.screen === "game" && <GameScreen />}
+          {routerStore.screen === "start-modal" && <StartScreen />}
+          {routerStore.screen === "settings" && <SettingsScreen />}
+          {routerStore.screen === "finish" && <FinishScreen />}
+          {routerStore.screen === "game" && <GameScreen />}
         </motion.div>
       </AnimatePresence>
     </>
