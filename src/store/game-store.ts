@@ -43,7 +43,7 @@ class GameStore {
   }
 
   addToCorrect(word: string) {
-    haptic("success");
+    haptic("light");
     this.guessed.push(word);
     if (this.isWaitingLastWord) {
       routerStore.navigate("finish");
