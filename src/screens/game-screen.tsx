@@ -1,9 +1,10 @@
+import { observer } from "mobx-react-lite";
 import { Counter } from "../ui/counter";
 import { Countdown } from "../ui/countdown";
 import { CardDeck } from "../ui/card-deck";
 import { gameStore } from "../store/game-store";
 
-export function GameScreen() {
+export const GameScreen = observer(function GameScreen() {
   return (
     <div className="flex flex-col items-center justify-center h-dvh">
       <div className="flex justify-center mb-8">
@@ -20,4 +21,4 @@ export function GameScreen() {
       </div>
     </div>
   );
-}
+});

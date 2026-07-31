@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import observerPlugin from "mobx-react-observer/babel-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { execSync } from "child_process";
 
@@ -11,15 +10,8 @@ export default defineConfig({
   define: {
     __COMMIT_HASH__: JSON.stringify(commitHash),
   },
-  plugins: [
-    tailwindcss(),
-    react({
-      babel: {
-        plugins: [observerPlugin()],
-      }
-    })
-  ],
-  base: '/alias/',
+  plugins: [tailwindcss(), react()],
+  base: "/alias/",
   server: {
     port: 35396,
   },

@@ -1,14 +1,21 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { observer } from "mobx-react-lite";
 import { Modal } from "../ui/modal";
 import { routerStore } from "../store/router-store";
 import { gameStore } from "../store/game-store";
 import { i18nStore, t } from "../store/i18n-store";
 import { languages, languageNames } from "../i18n/translations";
 
-export function SettingsScreen() {
+export const SettingsScreen = observer(function SettingsScreen() {
   return (
-    <Modal footer={<p className="mt-2 text-xs text-yellow-800/50">{t("appVersion")}: {__COMMIT_HASH__}</p>}>
+    <Modal
+      footer={
+        <p className="mt-2 text-xs text-yellow-800/50">
+          {t("appVersion")}: {__COMMIT_HASH__}
+        </p>
+      }
+    >
       <div className="flex flex-col items-center">
         <div className="w-full flex items-center mb-6">
           <motion.button
@@ -56,4 +63,4 @@ export function SettingsScreen() {
       </div>
     </Modal>
   );
-}
+});
