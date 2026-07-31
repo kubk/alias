@@ -1,15 +1,14 @@
 import { Settings } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
-import { observer } from "mobx-react-lite";
+import { AnimatePresence, motion, type Transition } from "framer-motion";
 import { StartScreen } from "./screens/start-screen";
 import { GameScreen } from "./screens/game-screen";
 import { FinishScreen } from "./screens/finish-screen";
 import { SettingsScreen } from "./screens/settings-screen";
 import { routerStore } from "./store/router-store";
 
-const transition = { ease: "easeInOut", duration: 0.2 };
+const transition: Transition = { ease: "easeInOut", duration: 0.2 };
 
-export const Page = observer(function Page() {
+export function Page() {
   return (
     <>
       {routerStore.screen === "start-modal" && (
@@ -43,4 +42,4 @@ export const Page = observer(function Page() {
       </AnimatePresence>
     </>
   );
-});
+}

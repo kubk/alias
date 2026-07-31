@@ -1,9 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { observer } from "mobx-react-lite";
 import { gameStore } from "../store/game-store";
 import { cn } from "../lib/cn";
 
-export const Countdown = observer(function Countdown() {
+export function Countdown() {
   return (
     <AnimatePresence>
       <div
@@ -27,4 +26,4 @@ export const Countdown = observer(function Countdown() {
       </div>
     </AnimatePresence>
   );
-});
+}
