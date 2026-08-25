@@ -17,7 +17,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.4",
     "lucide-react": "^0.575.0",
-    "mobx": "^7.0.0",
+    "mobx": "^7.0.3",
     "mobx-log": "^2.3.0",
     "mobx-persist-store": "^1.0.6",
     "mobx-react-observer": "^2.0.0",
