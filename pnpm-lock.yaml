@@ -26,9 +26,6 @@ importers:
       mobx-log:
         specifier: ^2.3.0
         version: 2.3.0(mobx@7.0.3)(react@18.3.1)
-      mobx-persist-store:
-        specifier: ^1.0.6
-        version: 1.1.8(mobx@7.0.3)
       mobx-react-lite:
         specifier: ^5.1.0
         version: 5.1.0(mobx@7.0.3)(react@18.3.1)
@@ -1011,11 +1008,6 @@ packages:
     peerDependencies:
       mobx: ^6.3.4 || ^7.0.0
       react: '>=16'
-
-  mobx-persist-store@1.1.8:
-    resolution: {integrity: sha512-7SiLvang0POfGvfP69fzmppBKv36e0TNndKJT1UokZuLXt13CqF3PAxIcRacHqjTBe4ktmzDsh3DK+fbM6epNg==}
-    peerDependencies:
-      mobx: '*'
 
   mobx-react-lite@5.1.0:
     resolution: {integrity: sha512-++LQTCRr4FJCWuaEvYl5gCtGBwOpOwrnWjm9uhCUDI5nmkzLR8eT1jgMeYfJ8wc88YOYyC/ygjw2KpYPBYGsww==}
@@ -2060,10 +2052,6 @@ snapshots:
     dependencies:
       mobx: 7.0.3
       react: 18.3.1
-
-  mobx-persist-store@1.1.8(mobx@7.0.3):
-    dependencies:
-      mobx: 7.0.3
 
   mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1):
     dependencies:

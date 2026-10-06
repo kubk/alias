@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { makeLoggable } from "mobx-log";
 import { assert } from "ts-essentials";
 import { getRandomWord, resetUsedWords } from "../lib/get-random-word";
-import { makePersistable } from "mobx-persist-store";
+import { persist } from "../lib/persist";
 import { i18nStore } from "./i18n-store";
 import type { Language } from "../i18n/translations";
 import { haptic } from "../lib/haptics";
@@ -21,11 +21,7 @@ class GameStore {
     this.resetGame();
     makeAutoObservable(this, {}, { autoBind: true });
     makeLoggable(this);
-    makePersistable(this, {
-      name: this.constructor.name,
-      properties: ["secondsPerRound"],
-      storage: window.localStorage,
-    });
+    persist(this, { name: "GameStore", fields: ["secondsPerRound"] });
   }
 
   private addRandomCard() {

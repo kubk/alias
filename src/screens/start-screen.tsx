@@ -30,6 +30,7 @@ export const StartScreen = observer(function StartScreen() {
               className="flex-1 h-12 rounded-lg font-bold text-lg relative z-10"
             >
               <m.span
+                className="relative top-px"
                 animate={{
                   color:
                     gameStore.secondsPerRound === seconds

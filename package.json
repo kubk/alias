@@ -19,7 +19,6 @@
     "lucide-preact": "^1.52.0",
     "mobx": "^7.0.3",
     "mobx-log": "^2.3.0",
-    "mobx-persist-store": "^1.0.6",
     "mobx-react-lite": "^5.1.0",
     "preact": "^11.0.0",
     "tailwind-merge": "^3.3.1",
