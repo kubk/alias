@@ -1,10 +1,11 @@
+import { observer } from "mobx-react-lite";
+import * as m from "framer-motion/m";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
-import { motion } from "framer-motion";
 import { gameStore } from "../store/game-store";
 import { t } from "../store/i18n-store";
 
-export function StartScreen() {
+export const StartScreen = observer(function StartScreen() {
   return (
     <Modal>
       <div className="flex flex-col items-center">
@@ -28,7 +29,7 @@ export function StartScreen() {
               onClick={() => gameStore.changeSecondsPerRound(seconds)}
               className="flex-1 h-12 rounded-lg font-bold text-lg relative z-10"
             >
-              <motion.span
+              <m.span
                 animate={{
                   color:
                     gameStore.secondsPerRound === seconds
@@ -38,7 +39,7 @@ export function StartScreen() {
                 transition={{ duration: 0.2 }}
               >
                 {seconds}
-              </motion.span>
+              </m.span>
             </button>
           ))}
         </div>
@@ -50,7 +51,7 @@ export function StartScreen() {
             gameStore.startTimer();
           }}
         >
-          <motion.div
+          <m.div
             initial={{ opacity: 0.3 }}
             animate={{ opacity: 1 }}
             className="font-semibold text-xl"
@@ -61,9 +62,9 @@ export function StartScreen() {
             }}
           >
             {t("start")}
-          </motion.div>
+          </m.div>
         </Button>
       </div>
     </Modal>
   );
-}
+});

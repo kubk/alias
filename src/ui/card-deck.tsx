@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useState } from "preact/hooks";
 import { Card } from "./card";
 import { gameStore } from "../store/game-store";
 import { Button } from "./button";
 import { AnimatePresence } from "framer-motion";
 import { t } from "../store/i18n-store";
 
-export function CardDeck() {
+export const CardDeck = observer(function CardDeck() {
   const [index, setIndex] = useState(0);
   const [exitX, setExitX] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
@@ -68,4 +69,4 @@ export function CardDeck() {
       </div>
     </div>
   );
-}
+});

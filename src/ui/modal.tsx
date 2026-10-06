@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import type { ComponentChildren } from "preact";
 import { clsx } from "clsx";
 
 type Props = {
-  children: ReactNode;
+  children: ComponentChildren;
   className?: string;
-  footer?: ReactNode;
+  footer?: ComponentChildren;
 };
 
 export function Modal(props: Props) {

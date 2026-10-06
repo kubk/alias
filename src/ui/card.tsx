@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { Textfit } from "react-textfit";
+import * as m from "framer-motion/m";
 import { cn } from "../lib/cn";
+import { Textfit } from "./textfit";
 
 type Props = {
   word: string;
@@ -10,7 +10,7 @@ type Props = {
 
 export function Card({ word, isFront, exitX = 0 }: Props) {
   return (
-    <motion.div
+    <m.div
       className={cn(
         "absolute left-1/2 -translate-x-1/2 top-0 h-[290px] w-[290px] rounded-[15px] text-text grid place-items-center p-[10px] bg-card"
       )}
@@ -30,15 +30,11 @@ export function Card({ word, isFront, exitX = 0 }: Props) {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <Textfit
-        mode="single"
-        className="w-full h-full flex items-center justify-center"
-        max={48}
-      >
-        <p className="text-center font-semibold capitalize whitespace-nowrap">
+      <Textfit className="w-full h-full" max={48}>
+        <p className="text-center font-semibold capitalize">
           {word}
         </p>
       </Textfit>
-    </motion.div>
+    </m.div>
   );
 }

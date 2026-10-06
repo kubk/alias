@@ -1,8 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { observer } from "mobx-react-lite";
+import * as m from "framer-motion/m";
+import { AnimatePresence } from "framer-motion";
 import { gameStore } from "../store/game-store";
 import { cn } from "../lib/cn";
 
-export function Countdown() {
+export const Countdown = observer(function Countdown() {
   return (
     <AnimatePresence>
       <div
@@ -11,7 +13,7 @@ export function Countdown() {
           gameStore.isWarning ? "text-error" : "text-text"
         )}
       >
-        <motion.div
+        <m.div
           key={gameStore.secondsLeft}
           exit={{
             opacity: 0,
@@ -22,8 +24,8 @@ export function Countdown() {
           initial={{ opacity: 0, scale: 1 }}
         >
           {gameStore.secondsLeft}
-        </motion.div>
+        </m.div>
       </div>
     </AnimatePresence>
   );
-}
+});

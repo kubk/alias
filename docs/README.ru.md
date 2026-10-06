@@ -23,7 +23,7 @@
 
 ## Технологии
 
-- **Фреймворк**: [React](https://reactjs.org/)
+- **Фреймворк**: [Preact](https://preactjs.com/)
 - **Управление состоянием**: [MobX](https://mobx.js.org/)
 - **Сборка**: [Vite](https://vitejs.dev/)
 - **Стили**: [Tailwind CSS](https://tailwindcss.com/)

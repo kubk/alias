@@ -23,7 +23,7 @@ Alias is a team game that helps develop language skills. The goal is for you to 
 
 ## Technologies Used
 
-- **Framework**: [React](https://reactjs.org/)
+- **Framework**: [Preact](https://preactjs.com/)
 - **State Management**: [MobX](https://mobx.js.org/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)

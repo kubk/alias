@@ -1,7 +1,11 @@
-import ReactDOM from "react-dom/client";
+import { render } from "preact";
+import { LazyMotion, domAnimation } from "framer-motion";
 import "./index.css";
 import { Page } from "./page";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Page />
+render(
+  <LazyMotion features={domAnimation} strict>
+    <Page />
+  </LazyMotion>,
+  document.getElementById("root") as HTMLElement
 );

@@ -1,4 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
+import * as m from "framer-motion/m";
+import { AnimatePresence } from "framer-motion";
 import { cn } from "../lib/cn";
 
 export function Counter(props: {
@@ -8,7 +9,7 @@ export function Counter(props: {
   return (
     <div className="relative overflow-hidden h-[1em] text-5xl font-semibold leading-none">
       <AnimatePresence initial={false}>
-        <motion.div
+        <m.div
           key={props.value}
           className={cn({
             "text-error": props.variant === "error",
@@ -19,7 +20,7 @@ export function Counter(props: {
           initial={{ y: -75, opacity: 0 }}
         >
           {props.value}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </div>
   );

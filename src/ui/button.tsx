@@ -1,4 +1,5 @@
-import { motion, type HTMLMotionProps } from "framer-motion";
+import * as m from "framer-motion/m";
+import { type HTMLMotionProps } from "framer-motion";
 import { cn } from "../lib/cn";
 
 type Props = {
@@ -9,7 +10,7 @@ export function Button(props: Props) {
   const { className, variant, ...restProps } = props;
 
   return (
-    <motion.button
+    <m.button
       {...restProps}
       whileTap={{ scale: 0.95 }}
       className={cn(
@@ -22,6 +23,6 @@ export function Button(props: Props) {
       )}
     >
       {props.children}
-    </motion.button>
+    </m.button>
   );
 }

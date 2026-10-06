@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import preact from "@preact/preset-vite";
 import tailwindcss from "@tailwindcss/vite";
-import observerPlugin from "mobx-react-observer/vite-plugin";
 import { execSync } from "child_process";
 
 const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
@@ -11,7 +10,7 @@ export default defineConfig({
   define: {
     __COMMIT_HASH__: JSON.stringify(commitHash),
   },
-  plugins: [observerPlugin(), tailwindcss(), react()],
+  plugins: [tailwindcss(), preact()],
   base: "/alias/",
   server: {
     port: 35396,
