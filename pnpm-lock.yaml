@@ -55,8 +55,8 @@ importers:
         specifier: ^5.86.0
         version: 5.88.1(@types/node@24.13.3)(typescript@5.9.3)
       mobx-react-plugin:
-        specifier: ^1.0.0
-        version: 1.0.0(mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1))(mobx@7.0.3)(react@18.3.1)
+        specifier: ^1.0.1
+        version: 1.0.1(mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1))(mobx@7.0.3)(react@18.3.1)
       prettier:
         specifier: '2.6'
         version: 2.6.2
@@ -1018,8 +1018,8 @@ packages:
       mobx: ^7.0.0
       react: ^18 || ^19
 
-  mobx-react-plugin@1.0.0:
-    resolution: {integrity: sha512-vnOHJVPV3ZsvkVvBaarsLofFklVBXZWXqUYVIQx5jH8UvT1mr6X5Oyzz0sOlw0E7DddalQruslombysbKM5H1w==}
+  mobx-react-plugin@1.0.1:
+    resolution: {integrity: sha512-RePU4rzzLELyCdU3ufWxUfUVUDnNBPAdhuvWbYdUqIJRG7DKfy71QrV13F66rWo7PqC+ClK4LmcJGFsScGMjoA==}
     peerDependencies:
       mobx: ^7.0.0
       mobx-react-lite: ^5.0.0
@@ -2068,7 +2068,7 @@ snapshots:
       mobx: 7.0.3
       react: 18.3.1
 
-  mobx-react-plugin@1.0.0(mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1))(mobx@7.0.3)(react@18.3.1):
+  mobx-react-plugin@1.0.1(mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1))(mobx@7.0.3)(react@18.3.1):
     dependencies:
       '@babel/core': 7.29.7
       mobx: 7.0.3
