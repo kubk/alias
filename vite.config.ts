@@ -11,7 +11,12 @@ export default defineConfig({
   define: {
     __COMMIT_HASH__: JSON.stringify(commitHash),
   },
-  plugins: [mobxReactPlugin(), tailwindcss(), preact()],
+  plugins: [
+    // No React Compiler here, so the "use no memo" directives are not needed
+    mobxReactPlugin({ observer: { useNoMemo: false } }),
+    tailwindcss(),
+    preact(),
+  ],
   base: "/alias/",
   server: {
     port: 35396,
