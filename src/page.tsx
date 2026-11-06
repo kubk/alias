@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import * as m from "framer-motion/m";
 import { Settings } from "lucide-preact";
 import { AnimatePresence, type Transition } from "framer-motion";
@@ -10,7 +9,7 @@ import { routerStore } from "./store/router-store";
 
 const transition: Transition = { ease: "easeInOut", duration: 0.2 };
 
-export const Page = observer(function Page() {
+export function Page() {
   return (
     <>
       {routerStore.screen === "start-modal" && (
@@ -44,4 +43,4 @@ export const Page = observer(function Page() {
       </AnimatePresence>
     </>
   );
-});
+}

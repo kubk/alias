@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import * as m from "framer-motion/m";
 import { ArrowLeft } from "lucide-preact";
 import { Modal } from "../ui/modal";
@@ -7,7 +6,7 @@ import { gameStore } from "../store/game-store";
 import { i18nStore, t } from "../store/i18n-store";
 import { languages, languageNames } from "../i18n/translations";
 
-export const SettingsScreen = observer(function SettingsScreen() {
+export function SettingsScreen() {
   return (
     <Modal
       footer={
@@ -63,4 +62,4 @@ export const SettingsScreen = observer(function SettingsScreen() {
       </div>
     </Modal>
   );
-});
+}

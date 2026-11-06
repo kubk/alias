@@ -1,10 +1,9 @@
-import { observer } from "mobx-react-lite";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { gameStore } from "../store/game-store";
 import { t } from "../store/i18n-store";
 
-export const FinishScreen = observer(function FinishScreen() {
+export function FinishScreen() {
   return (
     <Modal>
       <div className="flex flex-col items-center z-[11] w-full">
@@ -68,4 +67,4 @@ export const FinishScreen = observer(function FinishScreen() {
       </div>
     </Modal>
   );
-});
+}

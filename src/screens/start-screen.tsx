@@ -1,11 +1,10 @@
-import { observer } from "mobx-react-lite";
 import * as m from "framer-motion/m";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { gameStore } from "../store/game-store";
 import { t } from "../store/i18n-store";
 
-export const StartScreen = observer(function StartScreen() {
+export function StartScreen() {
   return (
     <Modal>
       <div className="flex flex-col items-center">
@@ -68,4 +67,4 @@ export const StartScreen = observer(function StartScreen() {
       </div>
     </Modal>
   );
-});
+}

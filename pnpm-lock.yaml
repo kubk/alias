@@ -54,6 +54,9 @@ importers:
       knip:
         specifier: ^5.86.0
         version: 5.88.1(@types/node@24.13.3)(typescript@5.9.3)
+      mobx-react-plugin:
+        specifier: ^1.0.0
+        version: 1.0.0(mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1))(mobx@7.0.3)(react@18.3.1)
       prettier:
         specifier: '2.6'
         version: 2.6.2
@@ -1013,6 +1016,13 @@ packages:
     resolution: {integrity: sha512-++LQTCRr4FJCWuaEvYl5gCtGBwOpOwrnWjm9uhCUDI5nmkzLR8eT1jgMeYfJ8wc88YOYyC/ygjw2KpYPBYGsww==}
     peerDependencies:
       mobx: ^7.0.0
+      react: ^18 || ^19
+
+  mobx-react-plugin@1.0.0:
+    resolution: {integrity: sha512-vnOHJVPV3ZsvkVvBaarsLofFklVBXZWXqUYVIQx5jH8UvT1mr6X5Oyzz0sOlw0E7DddalQruslombysbKM5H1w==}
+    peerDependencies:
+      mobx: ^7.0.0
+      mobx-react-lite: ^5.0.0
       react: ^18 || ^19
 
   mobx@7.0.3:
@@ -2057,6 +2067,16 @@ snapshots:
     dependencies:
       mobx: 7.0.3
       react: 18.3.1
+
+  mobx-react-plugin@1.0.0(mobx-react-lite@5.1.0(mobx@7.0.3)(react@18.3.1))(mobx@7.0.3)(react@18.3.1):
+    dependencies:
+      '@babel/core': 7.29.7
+      mobx: 7.0.3
+      mobx-react-lite: 5.1.0(mobx@7.0.3)(react@18.3.1)
+      picomatch: 4.0.5
+      react: 18.3.1
+    transitivePeerDependencies:
+      - supports-color
 
   mobx@7.0.3: {}
 
