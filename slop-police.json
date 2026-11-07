@@ -1,0 +1,11 @@
+{
+  "projects": ["tsconfig.json", "tsconfig.node.json"],
+  "rules": {
+    "unused-exports": [
+      "error",
+      {
+        "entry": ["vite.config.ts", "src/main.tsx"]
+      }
+    ]
+  }
+}
