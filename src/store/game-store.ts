@@ -15,7 +15,7 @@ class GameStore {
   secondsPerRound = 60;
   secondsLeft?: number;
   isWaitingLastWord = false;
-  private intervalId?: NodeJS.Timeout;
+  private intervalId?: ReturnType<typeof setInterval>;
 
   constructor() {
     this.resetGame();
