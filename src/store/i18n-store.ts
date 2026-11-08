@@ -6,8 +6,17 @@ import {
   TranslationKey,
 } from "../i18n/translations";
 
+function detectLanguage(): Language {
+  const locales = navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language];
+  return locales.some((locale) => locale?.toLowerCase().startsWith("ru"))
+    ? "ru"
+    : "en";
+}
+
 class I18nStore {
-  language: Language = "en";
+  language: Language = detectLanguage();
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
