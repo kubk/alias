@@ -32,7 +32,7 @@
     "@types/node": "^26.6.6",
     "mobx-react-plugin": "^1.0.2",
     "prettier": "~3.9.10",
-    "slop-police": "^0.3.13",
+    "slop-police": "^0.3.14",
     "typescript": "^7.0.2",
     "vite": "^8.3.6"
   }
