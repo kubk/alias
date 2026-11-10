@@ -59,7 +59,7 @@ export function FinishScreen() {
             onClick={() => {
               gameStore.restart();
             }}
-            className="text-text/60 text-sm hover:text-text/80 transition-colors mt-1"
+            className="w-full py-3 text-text/60 text-lg font-semibold hover:text-text/80 transition-colors cursor-pointer select-none"
           >
             {t("quit")}
           </button>
