@@ -26,6 +26,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  /* Disable double-tap zoom on mobile (iOS ignores user-scalable=no) */
+  touch-action: manipulation;
+}
+
 html,
 body {
   overscroll-behavior: none;
