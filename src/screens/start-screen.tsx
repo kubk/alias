@@ -45,24 +45,22 @@ export function StartScreen() {
         </div>
 
         <div className="mt-9" />
+        {/* Wiggle only once the player has hesitated; picking a round length restarts the wait */}
         <Button
+          key={gameStore.secondsPerRound}
           variant="success"
           onClick={() => {
             gameStore.startTimer();
           }}
+          animate={{ rotate: [0, -3, 3, -3, 3, 0] }}
+          transition={{
+            delay: 3,
+            duration: 0.5,
+            repeat: Infinity,
+            repeatDelay: 2.5,
+          }}
         >
-          <m.div
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: 1 }}
-            className="font-semibold text-xl"
-            transition={{
-              repeat: Infinity,
-              repeatType: "reverse",
-              duration: 0.3,
-            }}
-          >
-            {t("start")}
-          </m.div>
+          <span className="font-semibold text-xl">{t("start")}</span>
         </Button>
       </div>
     </Modal>
