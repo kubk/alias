@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .idea
+
+# Amp orb portal state
+.amp/portals/
+.amp/in/
