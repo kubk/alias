@@ -5,7 +5,7 @@ import { getRandomWord, resetUsedWords } from "../lib/get-random-word";
 import { persist } from "../lib/persist";
 import { i18nStore } from "./i18n-store";
 import type { Language } from "../i18n/translations";
-import { haptic } from "../lib/haptics";
+import { soundStore } from "./sound-store";
 import { routerStore } from "./router-store";
 
 class GameStore {
@@ -30,7 +30,7 @@ class GameStore {
   }
 
   addToSkipped(word: string) {
-    haptic("light");
+    soundStore.play("close", { emphasis: "subtle" });
     this.skipped.push(word);
     if (this.isWaitingLastWord) {
       routerStore.navigate("finish");
@@ -39,7 +39,7 @@ class GameStore {
   }
 
   addToCorrect(word: string) {
-    haptic("light");
+    soundStore.play("success", { emphasis: "subtle" });
     this.guessed.push(word);
     if (this.isWaitingLastWord) {
       routerStore.navigate("finish");
@@ -48,7 +48,7 @@ class GameStore {
   }
 
   startTimer() {
-    haptic("light");
+    soundStore.play("tap");
     this.isWaitingLastWord = false;
     routerStore.navigate("game");
     this.secondsLeft = this.secondsPerRound;
@@ -62,12 +62,12 @@ class GameStore {
       assert(this.intervalId);
       clearInterval(this.intervalId);
       this.isWaitingLastWord = true;
-      haptic("heavy");
+      soundStore.play("attention");
     }
   }
 
   changeSecondsPerRound(seconds: number) {
-    haptic("selection");
+    soundStore.play("select");
     this.secondsPerRound = seconds;
   }
 
@@ -81,20 +81,19 @@ class GameStore {
   }
 
   playAgain() {
-    haptic("light");
     this.resetGame();
     this.startTimer();
   }
 
   restart() {
-    haptic("light");
+    soundStore.play("navigate", { direction: "back" });
     this.resetGame();
     routerStore.navigate("start-modal");
   }
 
   changeLanguage(lang: Language) {
     if (lang === i18nStore.language) return;
-    haptic("selection");
+    soundStore.play("select");
     i18nStore.setLanguage(lang);
     resetUsedWords();
     this.resetGame();

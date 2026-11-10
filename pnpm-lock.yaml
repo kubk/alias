@@ -14,6 +14,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      cuelume:
+        specifier: ^0.2.8
+        version: 0.2.8
       framer-motion:
         specifier: ^14.10.1
         version: 14.10.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -41,9 +44,6 @@ importers:
       ts-essentials:
         specifier: ^10.2.1
         version: 10.2.1(typescript@7.0.2)
-      web-haptics:
-        specifier: ^0.0.6
-        version: 0.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@preact/preset-vite':
         specifier: ^2.10.6
@@ -846,6 +846,9 @@ packages:
     resolution: {integrity: sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==}
     engines: {node: '>= 6'}
 
+  cuelume@0.2.8:
+    resolution: {integrity: sha512-jnwAdMMUK4emaUWRd9l2RjpfixAMFOFrVkjoVK59FIfk7D3Vuvt+vBBJvU/J+2EiXrDlduialwDKJZorS5Nxqg==}
+
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
     engines: {node: '>=6.0'}
@@ -1268,23 +1271,6 @@ packages:
       tsx:
         optional: true
       yaml:
-        optional: true
-
-  web-haptics@0.0.6:
-    resolution: {integrity: sha512-eCzcf1LDi20+Fr0x9V3OkX92k0gxEQXaHajmhXHitsnk6SxPeshv8TBtBRqxyst8HI1uf2FyFVE7QS3jo1gkrw==}
-    peerDependencies:
-      react: '>=18'
-      react-dom: '>=18'
-      svelte: '>=4'
-      vue: '>=3'
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      svelte:
-        optional: true
-      vue:
         optional: true
 
   yallist@3.1.1:
@@ -1873,6 +1859,8 @@ snapshots:
 
   css-what@6.2.2: {}
 
+  cuelume@0.2.8: {}
+
   debug@4.4.3:
     dependencies:
       ms: 2.1.3
@@ -2272,11 +2260,6 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.7.0
       yaml: 2.9.1
-
-  web-haptics@0.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    optionalDependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   yallist@3.1.1: {}
 

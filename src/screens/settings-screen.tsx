@@ -1,10 +1,36 @@
 import * as m from "framer-motion/m";
+import type { ComponentChildren } from "preact";
 import { ArrowLeft } from "lucide-preact";
 import { Modal } from "../ui/modal";
 import { routerStore } from "../store/router-store";
 import { gameStore } from "../store/game-store";
+import { soundStore } from "../store/sound-store";
 import { i18nStore, t } from "../store/i18n-store";
 import { languages, languageNames } from "../i18n/translations";
+
+function OptionButton(props: {
+  isSelected: boolean;
+  onClick: () => void;
+  children: ComponentChildren;
+}) {
+  return (
+    <m.button
+      onClick={props.onClick}
+      className="h-12 rounded-lg font-medium text-base"
+      animate={{
+        backgroundColor: props.isSelected
+          ? "var(--color-success)"
+          : "rgba(34, 34, 34, 0.05)",
+        color: props.isSelected ? "var(--color-white)" : "var(--color-text)",
+      }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.15 }}
+    >
+      {props.children}
+    </m.button>
+  );
+}
 
 export function SettingsScreen() {
   return (
@@ -35,27 +61,31 @@ export function SettingsScreen() {
             <p className="text-base text-text/70 mb-3">{t("language")}</p>
             <div className="grid grid-cols-2 gap-2">
               {languages.map((lang) => (
-                <m.button
+                <OptionButton
                   key={lang}
+                  isSelected={i18nStore.language === lang}
                   onClick={() => gameStore.changeLanguage(lang)}
-                  className="h-12 rounded-lg font-medium text-base"
-                  animate={{
-                    backgroundColor:
-                      i18nStore.language === lang
-                        ? "var(--color-success)"
-                        : "rgba(34, 34, 34, 0.05)",
-                    color:
-                      i18nStore.language === lang
-                        ? "var(--color-white)"
-                        : "var(--color-text)",
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
                 >
                   {languageNames[lang]}
-                </m.button>
+                </OptionButton>
               ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-base text-text/70 mb-3">{t("sounds")}</p>
+            <div className="grid grid-cols-2 gap-2">
+              <OptionButton
+                isSelected={soundStore.isEnabled}
+                onClick={() => soundStore.setIsEnabled(true)}
+              >
+                {t("on")}
+              </OptionButton>
+              <OptionButton
+                isSelected={!soundStore.isEnabled}
+                onClick={() => soundStore.setIsEnabled(false)}
+              >
+                {t("off")}
+              </OptionButton>
             </div>
           </div>
         </div>

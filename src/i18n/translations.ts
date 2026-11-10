@@ -20,6 +20,9 @@ const translations = {
     language: "Language & words",
     back: "Back",
     appVersion: "App version",
+    sounds: "Sounds",
+    on: "On",
+    off: "Off",
   },
   ru: {
     appTitle: "Алиас",
@@ -34,6 +37,9 @@ const translations = {
     language: "Язык и слова",
     back: "Назад",
     appVersion: "Версия приложения",
+    sounds: "Звуки",
+    on: "Вкл",
+    off: "Выкл",
   },
 } as const;
 

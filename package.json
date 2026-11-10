@@ -16,6 +16,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
     "clsx": "^2.1.1",
+    "cuelume": "^0.2.8",
     "framer-motion": "^14.10.1",
     "lucide-preact": "^1.70.0",
     "mobx": "^7.1.5",
@@ -24,8 +25,7 @@
     "preact": "^11.2.0",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.5",
-    "ts-essentials": "^10.2.1",
-    "web-haptics": "^0.0.6"
+    "ts-essentials": "^10.2.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",

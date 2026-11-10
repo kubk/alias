@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { makeLoggable } from "mobx-log";
-import { haptic } from "../lib/haptics";
+import { soundStore } from "./sound-store";
 
 type Screen = "start-modal" | "game" | "finish" | "settings";
 
@@ -17,12 +17,12 @@ class RouterStore {
   }
 
   openSettings() {
-    haptic("light");
+    soundStore.play("open");
     this.screen = "settings";
   }
 
   closeSettings() {
-    haptic("light");
+    soundStore.play("close");
     this.screen = "start-modal";
   }
 }
