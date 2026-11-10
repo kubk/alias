@@ -8,7 +8,7 @@ step() {
   shift
   local start=$SECONDS
   echo "==> $name"
-  "$@"
+  "$@" || return
   echo "<== $name ($((SECONDS - start))s)"
 }
 
@@ -25,3 +25,9 @@ if [[ "$(pnpm --version 2>/dev/null || true)" != "$pnpm_version" ]]; then
 fi
 
 step "Install dependencies" pnpm install --frozen-lockfile
+
+# Prebundle dependencies into node_modules/.vite so the orb snapshot has them and
+# the first portal page load skips about 0.6 s of bundling. Vite marks
+# `vite optimize` deprecated, so a failure here only costs that time.
+step "Prebundle Vite dependencies" ./node_modules/.bin/vite optimize ||
+  echo "warning: vite optimize failed; the dev server will bundle dependencies on first load" >&2

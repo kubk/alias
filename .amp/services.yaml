@@ -1,6 +1,7 @@
 services:
   web:
-    command: pnpm exec vite --host 0.0.0.0 --port "$PORT"
+    # Run Vite directly: `pnpm exec` adds about 0.5 s before Vite starts.
+    command: ./node_modules/.bin/vite --host 0.0.0.0 --port "$PORT"
     health: /alias/
     portal:
       url: /alias/
