@@ -42,6 +42,9 @@ importers:
       '@preact/preset-vite':
         specifier: ^2.10.6
         version: 2.10.6(@babel/core@7.29.13)(preact@11.2.0)(rollup@4.62.3)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.1))
+      '@size-limit/file':
+        specifier: ^14.3.0
+        version: 14.3.0(size-limit@14.3.0)
       '@types/node':
         specifier: ^26.6.6
         version: 26.6.6
@@ -51,6 +54,9 @@ importers:
       prettier:
         specifier: ~3.9.10
         version: 3.9.10
+      size-limit:
+        specifier: ^14.3.0
+        version: 14.3.0
       slop-police:
         specifier: ^0.3.25
         version: 0.3.25
@@ -587,6 +593,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@size-limit/file@14.3.0':
+    resolution: {integrity: sha512-GWKOi0rorXPbYmwbT926Z91t28rg5gd5hv8ywY1FNcaYf8NbibgK5K5YabYbLkV6KpGwuuixBRtIzl3ZpPzUfw==}
+    engines: {node: ^22.19.0 || ^24.5.0 || >=26.0.0}
+    peerDependencies:
+      size-limit: 14.3.0
+
   '@tailwindcss/node@4.3.5':
     resolution: {integrity: sha512-yT53FzV4ke0cr/BguDxhWMpm5MJu1O2muzk+tKw6lKHjODAsYArBbWwFbJiaksfzFv1tpkO9QHGzmfs1hJT66g==}
 
@@ -1021,6 +1033,10 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
+  lilconfig@3.1.5:
+    resolution: {integrity: sha512-aRAOI9Ia43ygL4o1EOmC/sc/0OFxrm7qcQngiIyWaqVnSnz932ybJ07zyCcgMNGSDP8Yxaf88Xj1zHEXmvQ4SA==}
+    engines: {node: '>=14'}
+
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -1075,6 +1091,9 @@ packages:
     resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  nanospinner@1.2.2:
+    resolution: {integrity: sha512-Zt/AmG6qRU3e+WnzGGLuMCEAO/dAu45stNbHY223tUxldaDAeE+FxSPsd9Q+j+paejmm0ZbrNVs5Sraqy3dRxA==}
 
   node-html-parser@6.1.13:
     resolution: {integrity: sha512-qIsTMOY4C/dAa5Q5vsobRpOOvPfC4pB61UVW2uSwZNUp0QU/jCekTal1vMmbO0DgdHeLUJpv/ARmDqErVxA3Sg==}
@@ -1142,6 +1161,11 @@ packages:
 
   simple-code-frame@1.3.0:
     resolution: {integrity: sha512-MB4pQmETUBlNs62BBeRjIFGeuy/x6gGKh7+eRUemn1rCFhqo7K+4slPqsyizCbcbYLnaYqaoZ2FWsZ/jN06D8w==}
+
+  size-limit@14.3.0:
+    resolution: {integrity: sha512-SoT7DtEYQ9AkOIyrNmmHu8IyJyA3P/Q6EUVjUUinT0iBuaI6IOpWxwyI+teUxg8WdLwcTwbu9moKvw/LGlCE7g==}
+    engines: {node: ^22.19.0 || ^24.5.0 || >=26.0.0}
+    hasBin: true
 
   slop-police-darwin-arm64@0.3.25:
     resolution: {integrity: sha512-N20Ony9vPE9c8xfcLcYy0z0SMl6CQzAs93eVXw2GEC9JHhRhS6JNBZ7CTA/3I8RdgyDd3INFh1761T8jfGksPg==}
@@ -1673,6 +1697,10 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.62.3':
     optional: true
 
+  '@size-limit/file@14.3.0(size-limit@14.3.0)':
+    dependencies:
+      size-limit: 14.3.0
+
   '@tailwindcss/node@4.3.5':
     dependencies:
       '@jridgewell/remapping': 2.3.5
@@ -1992,6 +2020,8 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
+  lilconfig@3.1.5: {}
+
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
@@ -2044,6 +2074,10 @@ snapshots:
   ms@2.1.3: {}
 
   nanoid@3.3.20: {}
+
+  nanospinner@1.2.2:
+    dependencies:
+      picocolors: 1.1.1
 
   node-html-parser@6.1.13:
     dependencies:
@@ -2146,6 +2180,11 @@ snapshots:
   simple-code-frame@1.3.0:
     dependencies:
       kolorist: 1.8.0
+
+  size-limit@14.3.0:
+    dependencies:
+      lilconfig: 3.1.5
+      nanospinner: 1.2.2
 
   slop-police-darwin-arm64@0.3.25:
     optional: true

@@ -25,3 +25,5 @@ jobs:
         run: pnpm run typecheck
       - name: Slop Police
         run: pnpm run slop-police
+      - name: Bundle size
+        run: pnpm run size

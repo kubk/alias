@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Main JS",
+    "path": "dist/assets/index-*.js",
+    "gzip": true,
+    "limit": "72 kB"
+  },
+  {
+    "name": "Word lists",
+    "path": "dist/assets/top-2000-*.js",
+    "gzip": true,
+    "limit": "17 kB"
+  },
+  {
+    "name": "CSS",
+    "path": "dist/assets/index-*.css",
+    "gzip": true,
+    "limit": "5 kB"
+  },
+  {
+    "name": "All JS",
+    "path": "dist/assets/*.js",
+    "gzip": true,
+    "limit": "88 kB"
+  }
+]
