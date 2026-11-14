@@ -1,6 +1,6 @@
 <h1 align="center">Alias Game</h1>
 
-<img width="1132" alt="Alias game screenshot" src="./assets/alias.png?1">
+<img width="1132" alt="Alias game screenshot" src="./assets/screenshot.png">
 
 <p align="center">
   Readme: <a href="./README.md">English</a>, <a href="./docs/README.ru.md">Русский</a>
