@@ -27,23 +27,17 @@ importers:
         specifier: ^7.1.5
         version: 7.1.5
       mobx-log:
-        specifier: ^2.4.0
-        version: 2.4.0(mobx@7.1.5)(react@18.3.1)
+        specifier: ^2.4.2
+        version: 2.4.2(mobx@7.1.5)(react@18.3.1)
       mobx-react-lite:
         specifier: ^5.1.2
         version: 5.1.2(mobx@7.1.5)(react@18.3.1)
       preact:
         specifier: ^11.2.0
         version: 11.2.0
-      tailwind-merge:
-        specifier: ^3.7.0
-        version: 3.7.0
       tailwindcss:
         specifier: ^4.3.5
         version: 4.3.5
-      ts-essentials:
-        specifier: ^10.2.1
-        version: 10.2.1(typescript@7.0.2)
     devDependencies:
       '@preact/preset-vite':
         specifier: ^2.10.6
@@ -1045,8 +1039,8 @@ packages:
   magic-string@1.4.5:
     resolution: {integrity: sha512-oLLC2+YvQUfAa+vxoufE/yc1icb87M9iXIRqAoR/2EhE/8cb3SF/+Gi0c2By1B+5Vz2e2vQtUvHiu1+63Znh+w==}
 
-  mobx-log@2.4.0:
-    resolution: {integrity: sha512-rL5iCdMeanTIkkFxL+QhXlz+Msd++4v5tlNnAp7wptsGEqg4viwvtIm5FQnsPHmxvoSImMmAqStPxZiKE1nGvA==}
+  mobx-log@2.4.2:
+    resolution: {integrity: sha512-p2VVWIixn6gDvkD/BkLbSpKHKU3wXbaQHvkRfbXYoO7uCZW0YfIMpE+zKdAgSQxSAom2cqoEHou9cbCgWgQnSw==}
     engines: {node: '>=10'}
     peerDependencies:
       mobx: ^6.3.4 || ^7.0.0
@@ -1186,9 +1180,6 @@ packages:
     resolution: {integrity: sha512-H6D7134xi6qONvh7ZHKgviXf+rd3vhGBSvebPZCaUkd8zvQ+7PtDw6CljPTe4cXWNf2IKZGNqw6VJXSb9IgBpA==}
     engines: {node: '>=20.0.0'}
 
-  tailwind-merge@3.7.0:
-    resolution: {integrity: sha512-XPPUyAc+cvspz3lHTcR/QgPfW2A0lv/xQNIjX3HGhLR+Nq2lHaLq5MtTesHn8GUr3W3DguT2KT5x3NVgRtYwmA==}
-
   tailwindcss@4.3.5:
     resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
 
@@ -1199,14 +1190,6 @@ packages:
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
     engines: {node: '>=12.0.0'}
-
-  ts-essentials@10.2.1:
-    resolution: {integrity: sha512-+Id1fRkuir+CsgK2x04/icS2b4V1hQmq7ObzIrDjhN0ozfRYivnP7aaKMVJfLApQm0trjR39A6NIMVchiB9Erw==}
-    peerDependencies:
-      typescript: '>=4.5.0'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   tslib@2.9.1:
     resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
@@ -2029,7 +2012,7 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  mobx-log@2.4.0(mobx@7.1.5)(react@18.3.1):
+  mobx-log@2.4.2(mobx@7.1.5)(react@18.3.1):
     dependencies:
       mobx: 7.1.5
       react: 18.3.1
@@ -2189,8 +2172,6 @@ snapshots:
 
   stack-trace@1.0.0: {}
 
-  tailwind-merge@3.7.0: {}
-
   tailwindcss@4.3.5: {}
 
   tapable@2.3.3: {}
@@ -2199,10 +2180,6 @@ snapshots:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.7)
       picomatch: 4.0.7
-
-  ts-essentials@10.2.1(typescript@7.0.2):
-    optionalDependencies:
-      typescript: 7.0.2
 
   tslib@2.9.1: {}
 

@@ -1,7 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { makeLoggable } from "mobx-log";
-import { assert } from "ts-essentials";
-import { getRandomWord, resetUsedWords } from "../lib/get-random-word";
+import { assert } from "../lib/assert";
+import {
+  getRandomWord,
+  hasWords,
+  loadWords,
+  resetUsedWords,
+} from "../lib/get-random-word";
 import { persist } from "../lib/persist";
 import { i18nStore } from "./i18n-store";
 import type { Language } from "../i18n/translations";
@@ -15,13 +20,14 @@ class GameStore {
   secondsPerRound = 60;
   secondsLeft?: number;
   isWaitingLastWord = false;
+  isLoadingWords = false;
   private intervalId?: ReturnType<typeof setInterval>;
 
   constructor() {
-    this.resetGame();
     makeAutoObservable(this, {}, { autoBind: true });
     makeLoggable(this);
     persist(this, { name: "GameStore", fields: ["secondsPerRound"] });
+    loadWords(i18nStore.language);
   }
 
   private addRandomCard() {
@@ -47,8 +53,25 @@ class GameStore {
     this.addRandomCard();
   }
 
-  startTimer() {
+  async startTimer() {
+    if (this.isLoadingWords) return;
     soundStore.play("tap");
+    const { language } = i18nStore;
+    if (!hasWords(language)) {
+      this.isLoadingWords = true;
+      try {
+        await loadWords(language);
+      } finally {
+        this.isLoadingWords = false;
+      }
+      if (
+        routerStore.screen !== "start-modal" ||
+        i18nStore.language !== language
+      ) {
+        return;
+      }
+    }
+    this.cards = [getRandomWord(language), getRandomWord(language)];
     this.isWaitingLastWord = false;
     routerStore.navigate("game");
     this.secondsLeft = this.secondsPerRound;
@@ -74,10 +97,6 @@ class GameStore {
   private resetGame() {
     this.skipped = [];
     this.guessed = [];
-    this.cards = [
-      getRandomWord(i18nStore.language),
-      getRandomWord(i18nStore.language),
-    ];
   }
 
   playAgain() {
@@ -96,7 +115,7 @@ class GameStore {
     soundStore.play("select");
     i18nStore.setLanguage(lang);
     resetUsedWords();
-    this.resetGame();
+    loadWords(lang);
   }
 
   get currentCard() {

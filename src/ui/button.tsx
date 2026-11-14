@@ -1,6 +1,6 @@
 import * as m from "framer-motion/m";
 import { type HTMLMotionProps } from "framer-motion";
-import { cn } from "../lib/cn";
+import { clsx } from "clsx";
 
 type Props = {
   variant: "error" | "success";
@@ -13,7 +13,7 @@ export function Button(props: Props) {
     <m.button
       {...restProps}
       whileTap={{ scale: 0.95 }}
-      className={cn(
+      className={clsx(
         "flex w-full justify-center items-center cursor-pointer text-white font-bold text-base leading-6 p-4 border-0 rounded-[15px] select-none",
         {
           "bg-error": variant === "error",

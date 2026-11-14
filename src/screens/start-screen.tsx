@@ -1,4 +1,5 @@
 import * as m from "framer-motion/m";
+import { LoaderCircle } from "lucide-preact";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { gameStore } from "../store/game-store";
@@ -60,7 +61,11 @@ export function StartScreen() {
             repeatDelay: 2.5,
           }}
         >
-          <span className="font-semibold text-xl">{t("start")}</span>
+          {gameStore.isLoadingWords ? (
+            <LoaderCircle size={28} className="animate-spin" />
+          ) : (
+            <span className="font-semibold text-xl">{t("start")}</span>
+          )}
         </Button>
       </div>
     </Modal>

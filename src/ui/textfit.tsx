@@ -1,6 +1,6 @@
 import type { ComponentChildren } from "preact";
 import { useLayoutEffect, useRef } from "preact/hooks";
-import { cn } from "../lib/cn";
+import { clsx } from "clsx";
 
 type Props = {
   children: ComponentChildren;
@@ -37,7 +37,7 @@ export function Textfit({ children, className, max = 48 }: Props) {
   return (
     <div
       ref={containerRef}
-      className={cn("flex min-w-0 items-center justify-center", className)}
+      className={clsx("flex min-w-0 items-center justify-center", className)}
     >
       <div
         ref={textRef}

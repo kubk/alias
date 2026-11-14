@@ -1,6 +1,6 @@
 import * as m from "framer-motion/m";
 import { AnimatePresence } from "framer-motion";
-import { cn } from "../lib/cn";
+import { clsx } from "clsx";
 
 export function Counter(props: {
   variant: "error" | "success";
@@ -11,7 +11,7 @@ export function Counter(props: {
       <AnimatePresence initial={false}>
         <m.div
           key={props.value}
-          className={cn({
+          className={clsx({
             "text-error": props.variant === "error",
             "text-success": props.variant === "success",
           })}
