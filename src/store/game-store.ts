@@ -30,27 +30,25 @@ class GameStore {
     loadWords(i18nStore.language);
   }
 
-  private addRandomCard() {
+  private nextTurn() {
     this.cards.pop();
+    if (this.isWaitingLastWord) {
+      routerStore.navigate("finish");
+      return;
+    }
     this.cards.unshift(getRandomWord(i18nStore.language));
   }
 
   addToSkipped(word: string) {
     soundStore.play("close", { emphasis: "subtle" });
     this.skipped.push(word);
-    if (this.isWaitingLastWord) {
-      routerStore.navigate("finish");
-    }
-    this.addRandomCard();
+    this.nextTurn();
   }
 
   addToCorrect(word: string) {
     soundStore.play("success", { emphasis: "subtle" });
     this.guessed.push(word);
-    if (this.isWaitingLastWord) {
-      routerStore.navigate("finish");
-    }
-    this.addRandomCard();
+    this.nextTurn();
   }
 
   async startTimer() {
@@ -85,6 +83,7 @@ class GameStore {
       assert(this.intervalId);
       clearInterval(this.intervalId);
       this.isWaitingLastWord = true;
+      this.cards = [this.currentCard];
       soundStore.play("attention");
     }
   }

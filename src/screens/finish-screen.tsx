@@ -3,18 +3,23 @@ import { Modal } from "../ui/modal";
 import { gameStore } from "../store/game-store";
 import { t } from "../store/i18n-store";
 
-export function FinishScreen() {
+type Props = {
+  guessed: string[];
+  skipped: string[];
+};
+
+export function FinishScreen({ guessed, skipped }: Props) {
   return (
     <Modal>
       <div className="flex flex-col items-center z-[11] w-full">
         <span className="text-5xl font-bold mb-8">
-          {t("score")} {gameStore.guessed.length}
+          {t("score")} {guessed.length}
         </span>
 
         <div className="w-full mb-8 space-y-3">
-          {gameStore.guessed.length > 0 && (
+          {guessed.length > 0 && (
             <div className="flex flex-wrap gap-3">
-              {gameStore.guessed.map((word) => (
+              {guessed.map((word) => (
                 <div
                   key={`guess-${word}`}
                   className="flex items-center gap-1.5 bg-success/10 px-3 py-1.5 rounded-lg"
@@ -28,9 +33,9 @@ export function FinishScreen() {
             </div>
           )}
 
-          {gameStore.skipped.length > 0 && (
+          {skipped.length > 0 && (
             <div className="flex flex-wrap gap-3">
-              {gameStore.skipped.map((word) => (
+              {skipped.map((word) => (
                 <div
                   key={`skip-${word}`}
                   className="flex items-center gap-1.5 bg-error/10 px-3 py-1.5 rounded-lg"

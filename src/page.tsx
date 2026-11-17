@@ -6,6 +6,7 @@ import { GameScreen } from "./screens/game-screen";
 import { FinishScreen } from "./screens/finish-screen";
 import { SettingsScreen } from "./screens/settings-screen";
 import { routerStore } from "./store/router-store";
+import { gameStore } from "./store/game-store";
 
 const transition: Transition = { ease: "easeInOut", duration: 0.2 };
 
@@ -37,7 +38,13 @@ export function Page() {
         >
           {routerStore.screen === "start-modal" && <StartScreen />}
           {routerStore.screen === "settings" && <SettingsScreen />}
-          {routerStore.screen === "finish" && <FinishScreen />}
+          {/* An exiting screen keeps these props, so it shows the finished round while a new one starts */}
+          {routerStore.screen === "finish" && (
+            <FinishScreen
+              guessed={gameStore.guessed}
+              skipped={gameStore.skipped}
+            />
+          )}
           {routerStore.screen === "game" && <GameScreen />}
         </m.div>
       </AnimatePresence>
